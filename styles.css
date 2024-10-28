@@ -1,0 +1,259 @@
+.tomorrow-thin {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .tomorrow-extralight {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  .tomorrow-light {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .tomorrow-regular {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .tomorrow-medium {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .tomorrow-semibold {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .tomorrow-bold {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .tomorrow-extrabold {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  .tomorrow-black {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .tomorrow-thin-italic {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .tomorrow-extralight-italic {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+  }
+  
+  .tomorrow-light-italic {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .tomorrow-regular-italic {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .tomorrow-medium-italic {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .tomorrow-semibold-italic {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  .tomorrow-bold-italic {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .tomorrow-extrabold-italic {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+  }
+  
+  .tomorrow-black-italic {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+  
+@keyframes spin {
+    from {
+        rotate: 0deg;
+    }
+    
+ 
+    to {
+        rotate: 360deg;
+    }
+}
+.svg1, .svg2 {
+    fill-opacity: 0;
+    width: 50%;
+    position: absolute;
+    animation: spin 10s linear infinite ;
+    top:-25%;
+    left:-10%;
+    stroke: #FFAA00;
+    stroke-width: 2px;
+    filter: drop-shadow( 0 0 10px #ffAA0080);
+}
+body {
+    overflow-x: hidden;
+    background-color: #2e2e2e;
+}
+.hero-title {
+    color:#FFAA00;
+    margin:5px;
+    filter: drop-shadow( 0 0 10px #ffAA0080);
+}
+.hero {
+    stroke:  #2e2e2e;
+    stroke-width: 5px;
+    width: 100%;
+    height:100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50dvh;
+}
+.hero-main {
+    width:50%;
+    display: flex;
+    justify-content: center;
+}
+.svg3 {
+  filter: drop-shadow( 0 0 10px #ffAA0080);
+
+  transform: translate3d(0, 0, 0);
+  z-index: 98;
+}
+use {
+  z-index: 95;
+}
+.waves {
+  width: 210%;
+  z-index: 95;
+
+  min-height: 100px;
+  bottom: 0;
+  left: 0;
+  
+}
+
+#wave{
+  animation: move-forever 10s linear infinite;
+  filter: drop-shadow( 0 0 1px #ffAA0080);
+}
+
+
+.arrow-body {
+  /* Rectangle 1 */
+
+position: relative;
+left:45%;
+top:75px;
+width: 10px;
+height: 75px;
+background: #FFAA00;
+border-radius: 10px;
+z-index: 99;
+}
+.arrow {
+  position: fixed;
+  right:50px;
+  top:45%;
+display: flex;
+flex-direction: column;
+}
+
+.arrow svg {
+  z-index: 999;
+  stroke: #2e2e2e;
+  stroke-width: 2px;
+ position: relative;
+ margin:0px;
+animation: wiggle 5s ease-in-out infinite
+}
+.arrow svg:nth-child(1) {
+  animation-delay: 200ms;
+}
+.arrow svg:nth-child(2) {
+  animation-delay: 400ms;
+}
+.arrow svg:nth-child(3) {
+  animation-delay: 600ms;
+}
+
+@keyframes wiggle {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(0px);
+
+  }
+}
+
+@keyframes move-forever {
+  0% {
+      transform: translate3d(-90px, 0, 0);
+  }
+
+  100% {
+      transform: translate3d(85px, 0, 0);
+  }
+}
+
+
+/*Shrinking for mobile*/
+
+@media (max-width: 768px) {
+  .waves {
+      height: 40px;
+      min-height: 40px;
+  }
+}
+
+/* Waves Animation end*/
+
+.about {
+  position: relative;
+  bottom: 5px;
+  width:100dvw;
+  height:calc(100dvh);
+  background-color: #FFAA00;
+
+}
