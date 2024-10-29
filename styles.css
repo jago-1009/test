@@ -1,3 +1,10 @@
+:root {
+  --background: #2e2e2e;
+  --main-color: #ffaa00;
+  --main-opaque:var(--main-color, 0.5);
+}
+
+
 .tomorrow-thin {
     font-family: "Tomorrow", sans-serif;
     font-weight: 100;
@@ -123,21 +130,29 @@
     animation: spin 10s linear infinite ;
     top:-25%;
     left:-10%;
-    stroke: #FFAA00;
+    stroke: var(--main-color);
     stroke-width: 2px;
-    filter: drop-shadow( 0 0 10px #ffAA0080);
+    filter: drop-shadow( 0 0 10px var(--main-opaque));
+}
+.svg1 path, .svg2 path {
+  fill: var(--background);
 }
 body {
+  width: 100%;
     overflow-x: hidden;
     background-color: #2e2e2e;
+    
 }
 .hero-title {
-    color:#FFAA00;
+    color:var(--main-color);
     margin:5px;
-    filter: drop-shadow( 0 0 10px #ffAA0080);
+    filter: drop-shadow( 0 0 10px var(--main-opaque));
+}
+.colorSelect {
+  color:var(--main-color)
 }
 .hero {
-    stroke:  #2e2e2e;
+    stroke:  var(--background);
     stroke-width: 5px;
     width: 100%;
     height:100dvh;
@@ -145,6 +160,10 @@ body {
     align-items: center;
     justify-content: center;
     margin-bottom: 50dvh;
+    flex-direction: column;
+}
+.title {
+  display: flex;
 }
 .hero-main {
     width:50%;
@@ -152,10 +171,13 @@ body {
     justify-content: center;
 }
 .svg3 {
-  filter: drop-shadow( 0 0 10px #ffAA0080);
+  filter: drop-shadow( 0 0 10px var(--main-opaque));
 
   transform: translate3d(0, 0, 0);
   z-index: 98;
+}
+.svg3 path {
+  fill: var(--main-color);
 }
 use {
   z-index: 95;
@@ -172,7 +194,7 @@ use {
 
 #wave{
   animation: move-forever 10s linear infinite;
-  filter: drop-shadow( 0 0 1px #ffAA0080);
+  filter: drop-shadow( 0 0 1px var(--main-opaque));
 }
 
 
@@ -184,7 +206,7 @@ left:45%;
 top:75px;
 width: 10px;
 height: 75px;
-background: #FFAA00;
+background: var(--main-color);
 border-radius: 10px;
 z-index: 99;
 }
@@ -198,11 +220,14 @@ flex-direction: column;
 
 .arrow svg {
   z-index: 999;
-  stroke: #2e2e2e;
+  stroke: var(--background);
   stroke-width: 2px;
  position: relative;
  margin:0px;
 animation: wiggle 5s ease-in-out infinite
+}
+.arrow svg path {
+  fill: var(--main-color);
 }
 .arrow svg:nth-child(1) {
   animation-delay: 200ms;
@@ -252,8 +277,51 @@ animation: wiggle 5s ease-in-out infinite
 .about {
   position: relative;
   bottom: 5px;
-  width:100dvw;
-  height:calc(100dvh);
-  background-color: #FFAA00;
+  width:100vw;
+  height:200dvh;
+  background-color: var(--main-color);
+  z-index: 5;
+}
+.arrow {
+  z-index: 999;
+}
+.about-title {
+  position: absolute;
+  right: 50%;
+  top:50%;
+  font-size: 40px;
+  text-align: center;
+}
+.navbar {
+  position: sticky;
+  top:0;
+  z-index: 999;
+  
+}
+.navbar ul {
+  display:flex;
+  width: 90%;
+  height:50px;
+  align-items: center;
+  list-style: none;
+  justify-content: flex-end;
+}
+.navbar li {
+  margin-right:32px;
+  transition: all 0.5s;
+}
+.navbar li a {
+  position: relative;
+  text-decoration: none;
+  color:var(--main-color);
+  font-size: 32px;
+  scroll-behavior: smooth;
+  stroke:var(--background);
+  stroke-width: 5px;
+
+}
+.navbar li:hover {
+  transform: scale(1.2);
+  filter: drop-shadow( 0 0 2px --main-opaque);
 
 }
