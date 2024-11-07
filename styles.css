@@ -1,10 +1,36 @@
 :root {
-  --background: #2e2e2e;
+  --background:#2e2e2e;
   --main-color: #ffaa00;
   --main-opaque:var(--main-color, 0.5);
+  
 }
-
-
+#scrollTest {
+  position: fixed;
+  top: 10px; /* initial position */
+  right: 10px;
+  background-color: lightblue;
+  padding: 10px;
+  z-index: 1000;
+  width: 100%;
+}
+#scrollPath {
+  width:30px;
+  top:0px;
+  background-color: red;
+  position: absolute;
+  right:10px;
+  clip-path: url('#scroll');
+  z-index: 99999;
+}
+/* ::-webkit-scrollbar {
+  
+  background-color: var(--main-color);
+  -webkit-clip-path: url('#scroll');
+  clip-path: url('#scroll');
+} */
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+}
 .tomorrow-thin {
     font-family: "Tomorrow", sans-serif;
     font-weight: 100;
@@ -140,8 +166,12 @@
 body {
   width: 100%;
     overflow-x: hidden;
-    background-color: #2e2e2e;
+    background-color: var(--background);
+    transition: all 0.5s;
     
+}
+body > * {
+    transition: all 0.5s;
 }
 .hero-title {
     color:var(--main-color);
@@ -149,7 +179,11 @@ body {
     filter: drop-shadow( 0 0 10px var(--main-opaque));
 }
 .colorSelect {
-  color:var(--main-color)
+  color:var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
 }
 .hero {
     stroke:  var(--background);
@@ -196,8 +230,17 @@ use {
   animation: move-forever 10s linear infinite;
   filter: drop-shadow( 0 0 1px var(--main-opaque));
 }
-
-
+#color {
+  transition: all 0.5s;
+}
+#color::-webkit-color-swatch {
+border: none;
+border-color:transparent;
+}
+.centered {
+  justify-content: space-evenly;
+  text-align: center;
+}
 .arrow-body {
   /* Rectangle 1 */
 
@@ -309,6 +352,8 @@ animation: wiggle 5s ease-in-out infinite
 .navbar li {
   margin-right:32px;
   transition: all 0.5s;
+  stroke:var(--background);
+  stroke-width: 5px;
 }
 .navbar li a {
   position: relative;
@@ -318,6 +363,8 @@ animation: wiggle 5s ease-in-out infinite
   scroll-behavior: smooth;
   stroke:var(--background);
   stroke-width: 5px;
+  -webkit-text-stroke: 0.75px var(--background);
+  
 
 }
 .navbar li:hover {
