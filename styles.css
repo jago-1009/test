@@ -433,7 +433,7 @@ animation-direction: reverse;
 content: "";
   height:100%;
   width:100%;
-background-color: red;
+
 mask-image: url('/assets/blob.svg');
 mask-size: contain;
 mask-repeat: no-repeat;
