@@ -174,16 +174,7 @@ z-index: 101;
         rotate: 360deg;
     }
 }
-@keyframes anti-spin {
-  from {
-      rotate: 360deg;
-  }
-  
 
-  to {
-      rotate: 0deg;
-  }
-}
 .svg1, .svg2 {
     fill-opacity: 0;
     width: 50%;
@@ -433,8 +424,8 @@ overflow: hidden;
   margin: 0;
 }
 .about-mask img {
- animation: anti-spin 5s linear infinite;
-
+ animation: spin 5s linear infinite;
+animation-direction: reverse;
 }
 .about-mask {
   position: absolute;
