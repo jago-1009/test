@@ -2,13 +2,24 @@ import { checkColors } from './lib/color-checker.js'
 let dark = "#2e2e2e"
 let light = "#fffff0"
 let isDark = true;
-console.log($('#about').offset().top)
 function initListeners() {
-  $('#scrollPath').css('height',`${$(document.body).height()}px`)
+  $('#scrollBar').css('height',`${$(document.body).height()}px`)
+  $('#scrollBackground').css('height',`${$(document.body).height()}px`)
+  
+
 }
 $(window).scroll(function() {
+  const windowHeight = $(window).height();
   const scrollTop = $(window).scrollTop();
-  $("#scrollTest").css("transform", `translateY(calc(${scrollTop}% + 75px))`);
+  const scrollHeight = $(document).height() - $(window).height();
+  const scrollRatio = scrollTop / scrollHeight;
+
+  const boxHeight = $('#scrollTest').outerHeight();
+
+
+  const thumbPosition = scrollRatio * (windowHeight - boxHeight);
+
+  $('#scrollTest').css('top', `calc(${thumbPosition}px + 10px)` );
 });
 
 function getScrollbarThumbPosition(element) {

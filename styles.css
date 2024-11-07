@@ -6,28 +6,53 @@
 }
 #scrollTest {
   position: fixed;
-  top: 10px; /* initial position */
-  right: 10px;
-  background-color: lightblue;
+  top: 10px;
+  left:10px;
+  background-color: var(--background);
   padding: 10px;
-  z-index: 1000;
+z-index: 101;
   width: 100%;
+  clip-path: url("#testScroll");
+  transition: 0.5s all;
 }
-#scrollPath {
+#scrollTestBackground {
   width:30px;
-  top:0px;
-  background-color: red;
-  position: absolute;
+  top:-10px;
+  background-color: var(--background);
+  position: fixed;
+  right:11.7px;
+  clip-path: url('#ScrollPathBackground');
+  z-index: 95;
+  transition: 0.5s all;
+}
+ 
+
+#scrollBar {
+  width:30px;
+  top:-10px;
+  background-color: var(--main-color);
+  position: fixed;
   right:10px;
   clip-path: url('#scroll');
-  z-index: 99999;
+  z-index: 95;
+  transition: 0.5s background-color;
+
+
 }
-/* ::-webkit-scrollbar {
-  
-  background-color: var(--main-color);
-  -webkit-clip-path: url('#scroll');
-  clip-path: url('#scroll');
-} */
+#scrollBackground {
+  width:30px;
+  top:-10px;
+  background-color: var(--background);
+  position: fixed;
+  right:11.7px;
+  clip-path: url('#ScrollPathBackground');
+  z-index: 95;
+  transition: 0.5s background-color;
+
+}
+::-webkit-scrollbar {
+ display: none;
+}
 ::-webkit-scrollbar-thumb {
   background-color: var(--main-color);
 }
@@ -178,6 +203,20 @@ body > * {
     margin:5px;
     filter: drop-shadow( 0 0 10px var(--main-opaque));
 }
+.colors {
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.colorBtn {
+  border-radius: 7px;
+  border: none;
+  margin:5px;
+cursor: pointer;
+}
+html {
+  scroll-behavior: smooth;
+}
 .colorSelect {
   color:var(--main-color);
   display: flex;
@@ -198,6 +237,14 @@ body > * {
 }
 .title {
   display: flex;
+  flex-direction: column;
+}
+.name {
+  display: flex;
+}
+.description {
+  text-align: center;
+  color:var(--main-color)
 }
 .hero-main {
     width:50%;
@@ -308,38 +355,102 @@ animation: wiggle 5s ease-in-out infinite
 
 /*Shrinking for mobile*/
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .waves {
-      height: 40px;
+    width: 100%;
+      height: 100px;
       min-height: 40px;
+      position: relative;
+      bottom:100px;
   }
+  .scroll-link {
+    font-size: 20px !important;
+  }
+ .arrow {
+  top:15%;
+ }
 }
 
 /* Waves Animation end*/
 
-.about {
+.aboutMe {
+  color:var(--background);
   position: relative;
-  bottom: 5px;
   width:100vw;
   height:200dvh;
   background-color: var(--main-color);
   z-index: 5;
+  bottom:40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .arrow {
   z-index: 999;
 }
-.about-title {
+.about-content {
+  margin:20px;
+  text-align: left;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-content * {
+  text-wrap:wrap;
+  margin:20px;
+}
+.about-img {
+  position: relative;
+height:400px;
+aspect-ratio: 1/1;
+ }
+.about-mask {
+  height:100%;
+
+position: absolute;
+inset: 0;
+background-color: #ffaa00;
+overflow: hidden;
+
+/* animation: spin 5s linear infinite; */
+
+}
+.about-mask, .about-mask img {
+  
+  margin: 0;
+}
+.about-mask::before {
   position: absolute;
-  right: 50%;
-  top:50%;
+  display: block;
+content: "";
+  height:100%;
+  width:100%;
+background-color: red;
+mask-image: url('/assets/blob.svg');
+mask-size: contain;
+mask-repeat: no-repeat;
+mask-composite: exclude;
+mask-clip: border-box;
+animation: spin 5s linear infinite;
+}
+
+.about-title {
+  color:var(--background);
+
   font-size: 40px;
-  text-align: center;
+  text-align: left;
 }
 .navbar {
   position: sticky;
   top:0;
   z-index: 999;
   
+}
+#about {
+position: relative;
+top:20%;
 }
 .navbar ul {
   display:flex;
@@ -359,13 +470,17 @@ animation: wiggle 5s ease-in-out infinite
   position: relative;
   text-decoration: none;
   color:var(--main-color);
-  font-size: 32px;
+  font-size: 24px;
   scroll-behavior: smooth;
   stroke:var(--background);
   stroke-width: 5px;
   -webkit-text-stroke: 0.75px var(--background);
   
 
+}
+.navbar ul {
+  display: flex;
+  flex-wrap: wrap;
 }
 .navbar li:hover {
   transform: scale(1.2);
