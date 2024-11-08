@@ -5,7 +5,7 @@ let isDark = true;
 function initListeners() {
   $('#scrollBar').css('height',`${$(document.body).height()}px`)
   $('#scrollBackground').css('height',`${$(document.body).height()}px`)
-  
+  $("#color").val($(":root").css("--main-color"))
 
 }
 $(window).scroll(function() {
