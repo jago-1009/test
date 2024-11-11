@@ -198,6 +198,12 @@ body {
     margin: 0;
     
 }
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  
+}
 .circles {
   height:100vh;
   position: absolute; 
