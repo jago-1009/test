@@ -365,10 +365,12 @@ animation: wiggle 5s ease-in-out infinite
 @keyframes move-forever {
   0% {
       transform: translate3d(-90px, 0, 0);
+      -webkit-transform: translate3d(-90px, 0, 0);
   }
 
   100% {
       transform: translate3d(85px, 0, 0);
+      -webkit-transform: translate3d(85px, 0, 0);
   }
 }
 
@@ -460,6 +462,10 @@ animation: spin 5s linear infinite;
 position: relative;
 top:20%;
 }
+.about-desc {
+  width:50%;
+}
+
 .navbar ul {
   display:flex;
   width: 90%;
