@@ -467,6 +467,7 @@ top:20%;
   align-items: center;
   list-style: none;
   justify-content: flex-end;
+  margin:0px;
 }
 .navbar li {
   margin-right:32px;
