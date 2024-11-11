@@ -356,46 +356,7 @@ animation: wiggle 5s ease-in-out infinite
 .arrow svg:nth-child(3) {
   animation-delay: 600ms;
 }
-.about-bridge-1 {
-  filter: blur(30px);
-  height:50vh;
-  width: 100%;
-  background-color: var(--main-color);
-  opacity: 80%;
-  position: relative;
-  margin-top: -10%;
-  z-index: 6;
-}
-.about-bridge-2 {
-  height:45vh;
-  width: 100%;
-  background-color: var(--main-color);
-  opacity: 60%;
-  position: relative;
-  
-}
-.about-bridge-3 {
-  height:45vh;
-  width: 100%;
-  background-color: var(--main-color);
-  opacity: 40%;
-  position: relative;
-  
-}
-.about-bridge-4 {
-  filter: blur(30px);
-  height:45vh;
-  width: 100%;
-  background-color: var(--main-color);
-  opacity: 20%;
-  position: relative;
-  
-}
-.about-bridge {
-  filter: blur(30px);
-  position: relative;
-  z-index: 6;
-}
+
 @keyframes wiggle {
   0% {
     transform: translateY(0px);
@@ -435,7 +396,7 @@ animation: wiggle 5s ease-in-out infinite
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   
 }
 
