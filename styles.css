@@ -177,14 +177,15 @@ z-index: 101;
 
 .svg1, .svg2 {
     fill-opacity: 0;
-    width: 50%;
+    width:50%;
     position: absolute;
     animation: spin 10s linear infinite ;
-    top:-25%;
+    top:-30%;
     left:-10%;
     stroke: var(--main-color);
     stroke-width: 2px;
     filter: drop-shadow( 0 0 10px var(--main-opaque));
+    z-index: -1;
 }
 .svg1 path, .svg2 path {
   fill: var(--background);
@@ -194,7 +195,15 @@ body {
   overflow-x: hidden;
     background-color: var(--background);
     transition: all 0.5s;
+    margin: 0;
     
+}
+.circles {
+  height:100vh;
+  position: absolute; 
+  background-color: transparent;
+  width: 100%;
+  overflow: hidden;
 }
 body > * {
     transition: all 0.5s;
@@ -203,6 +212,7 @@ body > * {
     color:var(--main-color);
     margin:5px;
     filter: drop-shadow( 0 0 10px var(--main-opaque));
+    -webkit-text-stroke:0.75px var(--background)
 }
 .colors {
   width:100%;
@@ -242,7 +252,9 @@ html {
 }
 .name {
   display: flex;
+  
 }
+
 .description {
   text-align: center;
   color:var(--main-color)
@@ -354,24 +366,6 @@ animation: wiggle 5s ease-in-out infinite
   }
 }
 
-
-/*Shrinking for mobile*/
-
-@media (max-width: 1000px) {
-  .waves {
-    width: 100%;
-      height: 100px;
-      min-height: 40px;
-      position: relative;
-      bottom:10px;
-  }
-  .scroll-link {
-    font-size: 20px !important;
-  }
- .arrow {
-  top:15%;
- }
-}
 
 /* Waves Animation end*/
 
@@ -494,4 +488,32 @@ top:20%;
   transform: scale(1.2);
   filter: drop-shadow( 0 0 2px --main-opaque);
 
+}
+
+/*Shrinking for mobile*/
+
+@media (max-width: 1000px) {
+  .waves {
+    width: 100%;
+      height: 100px;
+      min-height: 40px;
+      position: relative;
+      bottom:10px;
+  }
+  .scroll-link {
+    font-size: 20px !important;
+  }
+ .arrow {
+  top:15%;
+ }
+}
+@media (max-width:750px) {
+  .svg1, .svg2 {
+    width: 800px;
+    overflow-x: hidden;
+  }
+  .about-content {
+    display: block ;
+  }
+  
 }
