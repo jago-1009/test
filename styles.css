@@ -191,7 +191,7 @@ z-index: 101;
 }
 body {
   width: 100%;
-    overflow-x: hidden;
+  overflow-x: hidden;
     background-color: var(--background);
     transition: all 0.5s;
     
@@ -265,11 +265,12 @@ use {
   z-index: 95;
 }
 .waves {
+  
   width: 210%;
   z-index: 95;
-
+position: relative;
   min-height: 100px;
-  bottom: 0;
+  bottom: 10px;
   left: 0;
   
 }
@@ -362,7 +363,7 @@ animation: wiggle 5s ease-in-out infinite
       height: 100px;
       min-height: 40px;
       position: relative;
-      bottom:100px;
+      bottom:10px;
   }
   .scroll-link {
     font-size: 20px !important;
