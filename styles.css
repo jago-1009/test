@@ -54,6 +54,14 @@
       -webkit-transform: translate3d(85px, 0, 0);
   }
 }
+@keyframes flow {
+  0% {
+    top:6px;
+  }
+  100% {
+    top:290px;
+  }
+}
 
 /* Body Styling */
 body {
@@ -167,12 +175,15 @@ z-index: 101;
   transform: rotate(180deg);
 }
 .projects {
+  border: 10px solid var(--main-color);
   height:100vh;
-  width: 100%;
+  width: 98.5%;
   background-color: var(--background);
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  position: relative;
+  z-index: 20;
   
 }
 
@@ -240,11 +251,11 @@ html {
     flex-direction: column;
 }
 .proj-container {
-  background-color: var(--background);
-  width: 70%;
+  width: 90%;
   aspect-ratio: 3/2;
   mask-repeat: no-repeat;
   border-radius: 30px;
+  position: relative;
   animation:squish 2s infinite ease-in-out;
 
 }
@@ -260,14 +271,42 @@ html {
   
 }
 .liquid {
+  position: relative;
   width: 100%;
   height:50dvh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  bottom:40%;
 }
-
+.fluid {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width:100%;
+}
+.flow {
+  fill: var(--main-color);
+  position: relative;
+  z-index: 9;
+  animation: flow 0.8s infinite linear;
+}
+.top {
+  position: relative;
+  transform: translateY(-29px);
+}
+.nudge {
+  position: relative;
+  bottom:100px;
+  transform: translateY(-70px);
+}
+.nudge2 {
+  transform: translateY(-150px);
+  position: relative;
+  bottom:200px;
+}
 .description {
   text-align: center;
   color:var(--main-color);
@@ -300,14 +339,15 @@ use {
 }
 
 .bridge {
-  height:50vh;
+  height:100vh;
   width: 100%;
 }
 .funnel {
+  position: relative;
   height:100%;
   width:100%;
-  clip-path: polygon(50% 0%, 100% 0, 60% 46%, 60% 67%, 35% 67%, 35% 46%, 0 0);
-
+  clip-path: polygon(0 0, 100% 0, 60% 50%, 60% 70%, 40% 70%, 40% 51%);
+  z-index: 10;
   background-color: var(--main-color);
 }
 
@@ -377,7 +417,7 @@ animation: wiggle 5s ease-in-out infinite
   width:100vw;
   height:200dvh;
   background-color: var(--main-color);
-  z-index: 5;
+  z-index: 11;
   bottom:40px;
   display: flex;
   flex-direction: column;
