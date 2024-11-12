@@ -1,3 +1,4 @@
+/* Variables */
 :root {
   --background:#2e2e2e;
   --main-color: #c0ff33;
@@ -5,6 +6,74 @@
   --blur: blur(50px)
   
 }
+/* Font Families */
+.tomorrow-thin,.tomorrow-thin-italic{font-family:"Tomorrow",sans-serif;font-weight:100}
+.tomorrow-extralight,.tomorrow-extralight-italic{font-family:"Tomorrow",sans-serif;font-weight:200}
+.tomorrow-light,.tomorrow-light-italic{font-family:"Tomorrow",sans-serif;font-weight:300}
+.tomorrow-regular,.tomorrow-regular-italic{font-family:"Tomorrow",sans-serif;font-weight:400}
+.tomorrow-medium,.tomorrow-medium-italic{font-family:"Tomorrow",sans-serif;font-weight:500}
+.tomorrow-semibold,.tomorrow-semibold-italic{font-family:"Tomorrow",sans-serif;font-weight:600}
+.tomorrow-bold,.tomorrow-bold-italic{font-family:"Tomorrow",sans-serif;font-weight:700}
+.tomorrow-extrabold,.tomorrow-extrabold-italic{font-family:"Tomorrow",sans-serif;font-weight:800}
+.tomorrow-black,.tomorrow-black-italic{font-family:"Tomorrow",sans-serif;font-weight:900}
+
+.tomorrow-thin-italic,.tomorrow-extralight-italic,.tomorrow-light-italic,.tomorrow-regular-italic,.tomorrow-medium-italic,.tomorrow-semibold-italic,.tomorrow-bold-italic,.tomorrow-extrabold-italic,.tomorrow-black-italic{font-style:italic}
+
+/* Animations */
+@keyframes spin {
+  from {
+      rotate: 0deg;
+  }
+  
+
+  to {
+      rotate: 360deg;
+  }
+}
+@keyframes wiggle {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(0px);
+
+  }
+}
+
+@keyframes move-forever {
+  0% {
+      transform: translate3d(-90px, 0, 0);
+      -webkit-transform: translate3d(-90px, 0, 0);
+  }
+
+  100% {
+      transform: translate3d(85px, 0, 0);
+      -webkit-transform: translate3d(85px, 0, 0);
+  }
+}
+
+/* Body Styling */
+body {
+  width: 100%;
+  overflow-x: hidden;
+    background-color: var(--background);
+    transition: all 0.5s;
+    margin: 0;
+    
+}
+html, body {
+  overflow-x: clip;
+  margin: 0;
+  padding: 0;
+  
+}
+body > * {
+  transition: all 0.5s;
+}
+/* Scrollbar Styling */
 #scrollTest {
   position: fixed;
   top: 10px;
@@ -26,8 +95,6 @@ z-index: 101;
   z-index: 95;
   transition: 0.5s all;
 }
- 
-
 #scrollBar {
   width:30px;
   top:-10px;
@@ -57,125 +124,61 @@ z-index: 101;
 ::-webkit-scrollbar-thumb {
   background-color: var(--main-color);
 }
-.tomorrow-thin {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-  }
+
+/* Navbar Styling */
+.navbar ul {
+  display:flex;
+  width: 90%;
+  height:50px;
+  align-items: center;
+  list-style: none;
+  justify-content: flex-end;
+  margin:0px;
+}
+.navbar li {
+  margin-right:32px;
+  transition: all 0.5s;
+  stroke:var(--background);
+  stroke-width: 5px;
+}
+.navbar li a {
+  position: relative;
+  text-decoration: none;
+  color:var(--main-color);
+  font-size: 24px;
+  scroll-behavior: smooth;
+  stroke:var(--background);
+  stroke-width: 5px;
+  -webkit-text-stroke: 0.75px var(--background);
   
-  .tomorrow-extralight {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 200;
-    font-style: normal;
-  }
+
+}
+.navbar ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.navbar li:hover {
+  transform: scale(1.2);
+  filter: drop-shadow( 0 0 2px --main-opaque);
+
+}
+.upsideDown {
+  margin-top: -35px;
+  transform: rotate(180deg);
+}
+.projects {
+  height:100vh;
+  width: 100%;
+  background-color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   
-  .tomorrow-light {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  .tomorrow-regular {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  .tomorrow-medium {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-  }
-  
-  .tomorrow-semibold {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-  }
-  
-  .tomorrow-bold {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-  .tomorrow-extrabold {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 800;
-    font-style: normal;
-  }
-  
-  .tomorrow-black {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 900;
-    font-style: normal;
-  }
-  
-  .tomorrow-thin-italic {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 100;
-    font-style: italic;
-  }
-  
-  .tomorrow-extralight-italic {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 200;
-    font-style: italic;
-  }
-  
-  .tomorrow-light-italic {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 300;
-    font-style: italic;
-  }
-  
-  .tomorrow-regular-italic {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 400;
-    font-style: italic;
-  }
-  
-  .tomorrow-medium-italic {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 500;
-    font-style: italic;
-  }
-  
-  .tomorrow-semibold-italic {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 600;
-    font-style: italic;
-  }
-  
-  .tomorrow-bold-italic {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-  }
-  
-  .tomorrow-extrabold-italic {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 800;
-    font-style: italic;
-  }
-  
-  .tomorrow-black-italic {
-    font-family: "Tomorrow", sans-serif;
-    font-weight: 900;
-    font-style: italic;
-  }
-  
-@keyframes spin {
-    from {
-        rotate: 0deg;
-    }
-    
- 
-    to {
-        rotate: 360deg;
-    }
 }
 
+
+
+/* SVG styling */
 .svg1, .svg2 {
     fill-opacity: 0;
     width:50%;
@@ -191,20 +194,6 @@ z-index: 101;
 .svg1 path, .svg2 path {
   fill: var(--background);
 }
-body {
-  width: 100%;
-  overflow-x: hidden;
-    background-color: var(--background);
-    transition: all 0.5s;
-    margin: 0;
-    
-}
-html, body {
-  overflow-x: clip;
-  margin: 0;
-  padding: 0;
-  
-}
 .circles {
   height:100vh;
   position: absolute; 
@@ -212,9 +201,7 @@ html, body {
   width: 100%;
   overflow: hidden;
 }
-body > * {
-    transition: all 0.5s;
-}
+
 .hero-title {
     color:var(--main-color);
     margin:5px;
@@ -250,8 +237,19 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 50dvh;
     flex-direction: column;
+}
+.proj-container {
+  background-color: var(--background);
+  width: 70%;
+  aspect-ratio: 3/2;
+  mask-repeat: no-repeat;
+  border-radius: 30px;
+  animation:squish 2s infinite ease-in-out;
+
+}
+.project-grid {
+  display: none;
 }
 .title {
   display: flex;
@@ -260,6 +258,14 @@ html {
 .name {
   display: flex;
   
+}
+.liquid {
+  width: 100%;
+  height:50dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .description {
@@ -285,19 +291,23 @@ use {
   z-index: 95;
 }
 .waves {
-  
+  transform: translateY(10px);
   width: 210%;
   z-index: 20;
-position: relative;
-  min-height: 100px;
   bottom: 10px;
   left: 0;
   
 }
-.bridge-gap {
-  height:30vh;
+
+.bridge {
+  height:50vh;
   width: 100%;
-  filter: blur(100px);
+}
+.funnel {
+  height:100%;
+  width:100%;
+  clip-path: polygon(50% 0%, 100% 0, 60% 46%, 60% 67%, 35% 67%, 35% 46%, 0 0);
+
   background-color: var(--main-color);
 }
 
@@ -357,37 +367,13 @@ animation: wiggle 5s ease-in-out infinite
   animation-delay: 600ms;
 }
 
-@keyframes wiggle {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(30px);
-  }
-  100% {
-    transform: translateY(0px);
 
-  }
-}
-
-@keyframes move-forever {
-  0% {
-      transform: translate3d(-90px, 0, 0);
-      -webkit-transform: translate3d(-90px, 0, 0);
-  }
-
-  100% {
-      transform: translate3d(85px, 0, 0);
-      -webkit-transform: translate3d(85px, 0, 0);
-  }
-}
 
 
 /* Waves Animation end*/
 
 .aboutMe {
   color:var(--background);
-  position: relative;
   width:100vw;
   height:200dvh;
   background-color: var(--main-color);
@@ -476,53 +462,12 @@ top:20%;
   width:50%;
 }
 
-.navbar ul {
-  display:flex;
-  width: 90%;
-  height:50px;
-  align-items: center;
-  list-style: none;
-  justify-content: flex-end;
-  margin:0px;
-}
-.navbar li {
-  margin-right:32px;
-  transition: all 0.5s;
-  stroke:var(--background);
-  stroke-width: 5px;
-}
-.navbar li a {
-  position: relative;
-  text-decoration: none;
-  color:var(--main-color);
-  font-size: 24px;
-  scroll-behavior: smooth;
-  stroke:var(--background);
-  stroke-width: 5px;
-  -webkit-text-stroke: 0.75px var(--background);
-  
 
-}
-.navbar ul {
-  display: flex;
-  flex-wrap: wrap;
-}
-.navbar li:hover {
-  transform: scale(1.2);
-  filter: drop-shadow( 0 0 2px --main-opaque);
-
-}
 
 /*Shrinking for mobile*/
 
 @media (max-width: 1000px) {
-  .waves {
-    width: 100%;
-      height: 100px;
-      min-height: 40px;
-      position: relative;
-      bottom:10px;
-  }
+
   .scroll-link {
     font-size: 20px !important;
   }
@@ -546,7 +491,6 @@ top:20%;
 
 @media (max-width:500px) {
   .waves {
-    bottom: 19px;
   }
 }
 
