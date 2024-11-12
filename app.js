@@ -1,25 +1,24 @@
-import { checkColors } from './lib/color-checker.js'
-let dark = "#2e2e2e"
-let light = "#fffff0"
+import { checkColors } from "./lib/color-checker.js";
+let dark = "#2e2e2e";
+let light = "#fffff0";
 let isDark = true;
+let rotation = 0;
 function initListeners() {
-  $('#scrollBar').css('height',`${$(document.body).height()}px`)
-  $('#scrollBackground').css('height',`${$(document.body).height()}px`)
-  $("#color").val($(":root").css("--main-color"))
-
+  $("#scrollBar").css("height", `${$(document.body).height()}px`);
+  $("#scrollBackground").css("height", `${$(document.body).height()}px`);
+  $("#color").val($(":root").css("--main-color"));
 }
-$(window).scroll(function() {
+$(window).scroll(function () {
   const windowHeight = $(window).height();
   const scrollTop = $(window).scrollTop();
   const scrollHeight = $(document).height() - $(window).height();
   const scrollRatio = scrollTop / scrollHeight;
 
-  const boxHeight = $('#scrollTest').outerHeight();
-
+  const boxHeight = $("#scrollTest").outerHeight();
 
   const thumbPosition = scrollRatio * (windowHeight - boxHeight);
 
-  $('#scrollTest').css('top', `calc(${thumbPosition}px + 10px)` );
+  $("#scrollTest").css("top", `calc(${thumbPosition}px + 10px)`);
 });
 
 function getScrollbarThumbPosition(element) {
@@ -36,59 +35,85 @@ case, `w` is the current scroll position of the window, which is being updated w
 window is scrolled. This can be helpful for debugging and monitoring the scroll behavior of the
 webpage. */
 function hexToRgb(hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
-    } : null;
-  }
-  function getLuminance(obj) {
-    brightness = (299*obj.r + 587*obj.g + 114*obj.b) / 1000
-    return brightness
-  }
-  function contrast(color, background) {
-    let colorSend = color.slice(1)
-    let backgroundSend = background.slice(1)
-    // console.log(`${colorSend} ${backgroundSend}`)
-    const response = checkColors(colorSend, backgroundSend);
-    let ratio = response.contrast
-    return ratio;
-  
-  }
-$("#color").on('input', (e) => {
-
-    let color = e.target.value
-    setColor(color)
-    
-
-   
-})
-function setColor(color) {
-  var background = $(':root').css('--background')
-   
-  let contrastRatio = contrast(color,background)
-  console.log(contrastRatio)
- if (contrastRatio < 7.5) {
-  if (isDark == true) {
-    $(":root").get(0).style.setProperty('--background', light)
-    isDark = false
-  }
-  else {
-    $(":root").get(0).style.setProperty('--background', dark)
-    isDark = true
-  }
-  
- }
-return $(":root").get(0).style.setProperty('--main-color', color)
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null;
 }
-$('.colorBtn').on('click', (e) => {
-  let color = e.target.value
-  setColor(color)
-  $('#color').val(color)
-})
+function getLuminance(obj) {
+  brightness = (299 * obj.r + 587 * obj.g + 114 * obj.b) / 1000;
+  return brightness;
+}
+function contrast(color, background) {
+  let colorSend = color.slice(1);
+  let backgroundSend = background.slice(1);
+  // console.log(`${colorSend} ${backgroundSend}`)
+  const response = checkColors(colorSend, backgroundSend);
+  let ratio = response.contrast;
+  return ratio;
+}
+$("#color").on("input", (e) => {
+  let color = e.target.value;
+  setColor(color);
+});
+function setColor(color) {
+  var background = $(":root").css("--background");
 
- 
-$(document).ready(function () {
-initListeners();
+  let contrastRatio = contrast(color, background);
+  console.log(contrastRatio);
+  if (contrastRatio < 7.5) {
+    if (isDark == true) {
+      $(":root").get(0).style.setProperty("--background", light);
+      isDark = false;
+    } else {
+      $(":root").get(0).style.setProperty("--background", dark);
+      isDark = true;
+    }
+  }
+  return $(":root").get(0).style.setProperty("--main-color", color);
+}
+$(".colorBtn").on("click", (e) => {
+  let color = e.target.value;
+  setColor(color);
+  $("#color").val(color);
+});
+
+$("#gear").on("click", function (e) {
+  const $gear = $(this);
+  rotation += 360;
+  // Reset the rotation angle to 0 for each click
+
+  // Rotate the gear
+  $gear.animate(
+    { deg: rotation },
+    {
+      duration: 1200,
+      step: function (now) {
+        $gear.css({ transform: `rotate(${now}deg)` });
+      },
+      complete: function () {
+        if (rotation % 720 == 0) {
+          $(".pour-right").animate(
+            { right: "-150px" },
+            1000,
+            
+            function () {
+              $(".pour-right").css( "right", "200px");
+            }
+          );
+          $(".pour-left").animate({ left: "-200px" }, 1000, function () {
+            $(".pour-left").css( "left", "200px");
+          });
+        } else {
+          $(".pour-right").animate({ right: "50px" }, 1000);
+          $(".pour-left").animate({ left: "-50px" }, 1000);
+          $('.pour-right').removeAttr("style");
+        }
+      },
+    }
+  );
 });

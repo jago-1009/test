@@ -87,8 +87,9 @@ body > * {
   top: 10px;
   left:10px;
   background-color: var(--background);
+  /* background-color: red; */
   padding: 10px;
-z-index: 101;
+z-index: 999;
   width: 100%;
   clip-path: url("#testScroll");
   transition: 0.5s all;
@@ -100,17 +101,19 @@ z-index: 101;
   position: fixed;
   right:11.7px;
   clip-path: url('#ScrollPathBackground');
-  z-index: 95;
+  z-index: 950;
+  height:100%;
   transition: 0.5s all;
 }
 #scrollBar {
   width:30px;
   top:-10px;
+  height:100%;
   background-color: var(--main-color);
   position: fixed;
   right:10px;
   clip-path: url('#scroll');
-  z-index: 95;
+  z-index: 951;
   transition: 0.5s background-color;
 
 
@@ -175,10 +178,9 @@ z-index: 101;
   transform: rotate(180deg);
 }
 .projects {
-  border: 10px solid var(--main-color);
-  height:100vh;
-  width: 98.5%;
-  background-color: var(--background);
+  height:80vh;
+  width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -186,7 +188,20 @@ z-index: 101;
   z-index: 20;
   
 }
-
+.gear {
+  margin-top: 2%;
+  margin-left:2%;
+  width:50px;
+  fill: var(--main-color);
+  cursor: pointer;
+}
+.pipes {
+  width:10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height:100%;
+}
 
 
 /* SVG styling */
@@ -251,12 +266,16 @@ html {
     flex-direction: column;
 }
 .proj-container {
-  width: 90%;
-  aspect-ratio: 3/2;
+  top:60px;
+  width: 80%;
+  height:100%;
   mask-repeat: no-repeat;
   border-radius: 30px;
   position: relative;
   animation:squish 2s infinite ease-in-out;
+  border: 5px solid var(--main-color);
+  z-index: 99;
+  background-color: var(--background);
 
 }
 .project-grid {
@@ -307,6 +326,9 @@ html {
   position: relative;
   bottom:200px;
 }
+.nudge3 {
+  transform: translateY(-200px);
+}
 .description {
   text-align: center;
   color:var(--main-color);
@@ -341,6 +363,47 @@ use {
 .bridge {
   height:100vh;
   width: 100%;
+  background-color: var(--background);
+}
+.cover {
+  position: relative;
+  z-index: 85;
+  top:65px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.pipe {
+  height:50px;
+  width:100%;
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pipe-glass {
+  width:80%;
+  height:20px;
+  background-color: var(--background);
+  border: 2px solid var(--background);
+  border-radius: 10px;
+}
+.pour-right, .pour-left {
+  height:100%;
+  width:150%;
+  background-color: var(--main-color);
+  border-radius: 10px;
+ 
+}
+.pour-right {
+   position: relative;
+  right:200px;
+}
+.pour-left {
+  position: relative;
+ left:200px;
 }
 .funnel {
   position: relative;
@@ -350,7 +413,16 @@ use {
   z-index: 10;
   background-color: var(--main-color);
 }
-
+.intake {
+  position: absolute;
+  height:20%;
+  width:30%;
+  clip-path: polygon(0 0, 100% 0, 60% 50%, 60% 70%, 40% 70%, 40% 51%);
+  z-index: 10;
+  background-color: var(--main-color);
+  left:35%;
+  transform: translateY(15px);
+}
 #wave{
   animation: move-forever 10s linear infinite;
   filter: drop-shadow( 0 0 1px var(--main-opaque));
@@ -410,7 +482,6 @@ animation: wiggle 5s ease-in-out infinite
 
 
 
-/* Waves Animation end*/
 
 .aboutMe {
   color:var(--background);
@@ -501,8 +572,34 @@ top:20%;
 .about-desc {
   width:50%;
 }
-
-
+.contact {
+  height:100vh;
+  width: 100%;
+}
+.contact-container {
+  width: 100%;
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.conveyer1, .conveyer2, .conveyer3 {
+  width: 100%;
+}
+.cog {
+  width:50px;
+  height:100%;
+  fill: var(--main-color);
+}
+.belt, .belt-static {
+  width:100%;
+  height:50px;
+  border: 5px solid var(--main-color);
+  border-radius:10px;
+  display: flex;
+  justify-content: space-between;
+}
 
 /*Shrinking for mobile*/
 
@@ -515,6 +612,7 @@ top:20%;
   top:15%;
  }
 }
+
 @media (max-width:750px) {
   .svg1, .svg2 {
     width: 800px;
@@ -532,5 +630,6 @@ top:20%;
 @media (max-width:500px) {
   .waves {
   }
+
 }
 
