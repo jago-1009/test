@@ -409,7 +409,7 @@ html {
     stroke:  var(--background);
     stroke-width: 5px;
     width: 100%;
-    height:100dvh;
+    height:100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -463,7 +463,7 @@ html {
 .liquid {
   position: relative;
   width: 100%;
-  height:50dvh;
+  height:50vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -658,7 +658,7 @@ animation: wiggle 5s ease-in-out infinite
 .aboutMe {
   color:var(--background);
   width:100vw;
-  height:200dvh;
+  height:200vh;
   background-color: var(--main-color);
   z-index: 11;
   bottom:40px;
@@ -884,7 +884,7 @@ z-index: 60 !important;
   height:100%;
   background-color: var(--background);
   transform: translateY(-230%);
-  position: relative;
+  /* position: relative; */
   z-index: 70
 }
 .belt, .belt-static {

@@ -16,18 +16,41 @@ $(window).scroll(function () {
   const scrollHeight = $(document).height() - $(window).height();
   const scrollRatio = scrollTop / scrollHeight;
   const windowWidth = $(window).width();
-  const halfWaypoint = windowWidth / 1.5;
+  const halfWaypoint = (windowWidth / 2);
   
  
   $(".left").each(function () {
-    const boxPosition = $(this).position().left;
-    if (boxPosition > halfWaypoint) {
-      $(this).css("opacity", `0`);
-    }
-    else {
-      $(this).css("opacity", `1`);
-    }
-  })
+    const boxPosition = $(this).offset().left;
+    switch (windowWidth) {
+      case windowWidth < 600:
+        if (boxPosition > (windowWidth / 1.5)) {
+          $(this).hide();
+        }
+        else {
+          $(this).show();
+        }
+        break;
+      case windowWidth < 400:
+        if (boxPosition > (windowWidth / 1.4)) {
+          $(this).hide();
+        }
+        else {
+          $(this).show();
+        }
+        break;
+      default:
+        if (boxPosition >= halfWaypoint ) {
+          $(this).css("opacity", `0`);
+        }
+        else {
+          $(this).css("opacity", `1`);
+        }
+      }
+    })
+   
+   
+   
+  
   
   const boxHeight = $("#scrollTest").outerHeight();
 
