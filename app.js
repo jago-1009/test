@@ -3,6 +3,7 @@ let dark = "#2e2e2e";
 let light = "#fffff0";
 let isDark = true;
 let rotation = 0;
+let isOn = false;
 function initListeners() {
   $("#scrollBar").css("height", `${$(document.body).height()}px`);
   $("#scrollBackground").css("height", `${$(document.body).height()}px`);
@@ -105,7 +106,45 @@ $(".colorBtn").on("click", (e) => {
   setColor(color);
   $("#color").val(color);
 });
+$('#lever').on("click", function (e) {
+  const $leverOn = $('#leverHeadOn');
+  const $leverOff = $('#leverHeadOff');
+  const $pageCover = $('#pageCover');
+  isOn = !isOn;
+  console.log(isOn)
+  if (!isOn) {
+    $leverOff.addClass("lever-switch-reverse")
+      $leverOn.css("display", "none");
+      $leverOff.css("display", "block");
+      setTimeout(() => {
+        $('#steam').removeClass('steam-anim')
+      }, 500)
+      setTimeout(() => {
+        $pageCover.removeClass("flicker");
+        $pageCover.addClass("flicker-reverse");
+      }, 1000)
+      
+    
+  }
+  else {
+    
+    $leverOn.addClass("lever-switch");
+    $leverOn.css("display", "block");
+    $leverOff.css("display", "none");
+    setTimeout(() => {
+      $('#steam').addClass('steam-anim')
+    }, 500)
+    setTimeout(() => {
+      $pageCover.css('animation-play-state', 'running');
+      $pageCover.removeClass("flicker-reverse");
+      $pageCover.addClass("flicker");
+    }, 1000)
+    setTimeout(() => {
+      $pageCover.css('display', 'none');
+    }, 2000)
+  }
 
+})
 $("#gear").on("click", function (e) {
   const $gear = $(this);
   rotation += 360;

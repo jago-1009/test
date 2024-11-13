@@ -80,6 +80,47 @@
     transform: rotate(-95deg);
   }
 }
+@keyframes lever {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 90deg;
+  }
+}
+@keyframes lever-reverse {
+  from {
+    rotate: 0;
+  }
+  to {
+    rotate: -90deg;
+  }
+}
+@keyframes flicker {
+	0%, 19.9%, 22%,  64%, 64.9%, 70% {
+		opacity: 0.99;
+		
+	}
+	20%,62.9%, 21.9%, 63%, 63.9%, 65%, 69.9% {
+		opacity: 0.4;
+	}
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes steam {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+}
 /* Body Styling */
 body {
   width: 100%;
@@ -97,6 +138,21 @@ html, body {
 }
 body > * {
   transition: all 0.5s;
+}
+.page-cover {
+  width:100%;
+  height:100%;
+  position: fixed;
+  top:0;
+  left:0;
+  background-color: var(--background);
+  z-index:9999998 ;
+}
+.flicker {
+  animation: flicker 1.5s forwards;
+}
+.flicker-reverse {
+  animation: flicker 1.5s reverse forwards;
 }
 /* Scrollbar Styling */
 #scrollTest {
@@ -253,11 +309,79 @@ z-index: 999;
   width: 100%;
   overflow: hidden;
 }
+.steam {
+  width:100px;
+  height:100px;
+  background-color: var(--main-color);
+  clip-path: url('#steamSVG');
+  translate: 110% -290%;
+  rotate:90deg;
+  opacity: 0;
+}
+.steam-anim {
+  animation: steam 1s ease-in forwards normal infinite;
 
+}
+#steam {
+  clip-path: url('#steamSVG');
+
+}
+.whistle, .lever {
+  top:10%;
+  position: absolute;
+  height:500px;
+  width:25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 9999999;
+}
+.lever {
+  right:0;
+}
+.lever-body {
+  background-color: var(--main-color);
+  height:150px;
+  position: absolute;
+  right:0;
+  border-radius: 50% 0 0 50%   ;
+  width: 75px;
+  cursor: pointer;
+}
+.lever-head-on, .lever-head-off, .lever-head {
+  width:100%;
+  height:10px;
+  transform-origin: right;
+  cursor: pointer;
+  /* animation: lever 1s ease-in normal forwards ; */
+}
+.lever-head-on, .lever-head-off  {
+  background-color: var(--main-color);
+  transform: rotate(-45deg);
+
+}
+.lever-head-off {
+  display: none;
+  background-color: var(--main-color);
+  transform: rotate(45deg);
+}
+.whistle-body {
+  transform-origin: bottom left;
+  transform: rotate(-60deg);
+  background-color: var(--main-color);
+  width:100%;
+  height:50px;
+}
+.whistle-head {
+  transform: translate(20px, -110px);
+  height:150px;
+  width: 100px;
+  background-color: var(--main-color);
+  clip-path: url('#whistle');
+}
 .hero-title {
     color:var(--main-color);
     margin:5px;
-    filter: drop-shadow( 0 0 10px var(--main-opaque));
     -webkit-text-stroke:0.75px var(--background)
 }
 .colors {
@@ -387,7 +511,7 @@ html {
     justify-content: center;
 }
 .svg3 {
-  filter: drop-shadow( 0 0 10px var(--main-opaque));
+  /* filter: drop-shadow( 0 0 10px var(--main-opaque)); */
 
   transform: translate3d(0, 0, 0);
   z-index: 98;
@@ -473,7 +597,7 @@ use {
 }
 #wave{
   animation: move-forever 10s linear infinite;
-  filter: drop-shadow( 0 0 1px var(--main-opaque));
+  /* filter: drop-shadow( 0 0 1px var(--main-opaque)); */
 }
 #color {
   transition: all 0.5s;
@@ -610,7 +734,7 @@ animation: spin 5s linear infinite;
 .navbar {
   position: sticky;
   top:0;
-  z-index: 999;
+  z-index: 9999;
   
 }
 #about {
@@ -724,8 +848,14 @@ z-index: 60 !important;
   z-index: 99;
 }
 .reverse {
-  
+  animation-fill-mode: forwards;
   animation-direction: reverse !important;
+}
+.lever-switch {
+   animation: lever 0.8s ease-in normal forwards ;
+}
+.lever-switch-reverse {
+  animation: lever-reverse 0.8s ease-in normal forwards
 }
 .boxBottom {
   position: relative;
