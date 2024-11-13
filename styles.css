@@ -54,6 +54,16 @@
       -webkit-transform: translate3d(85px, 0, 0);
   }
 }
+@keyframes move-box {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(100% + var(--gap)))
+  }
+  
+  
+}
 @keyframes flow {
   0% {
     top:6px;
@@ -62,7 +72,14 @@
     top:290px;
   }
 }
-
+@keyframes flick {
+  0%,100% {
+    transform: rotate(-65deg);
+  }
+  50% {
+    transform: rotate(-95deg);
+  }
+}
 /* Body Styling */
 body {
   width: 100%;
@@ -189,10 +206,13 @@ z-index: 999;
   
 }
 .gear {
-  margin-top: 2%;
-  margin-left:2%;
+  position: relative;
+  top:2%;
+  left:2%;
   width:50px;
-  fill: var(--main-color);
+  height:50px;
+  background-color: var(--main-color);
+  clip-path: url('#gearSVG');
   cursor: pointer;
 }
 .pipes {
@@ -372,6 +392,7 @@ use {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 }
 
 
@@ -573,7 +594,7 @@ top:20%;
   width:50%;
 }
 .contact {
-  height:100vh;
+  height:90vh;
   width: 100%;
 }
 .contact-container {
@@ -584,16 +605,92 @@ top:20%;
   align-items: center;
   justify-content: space-around;
 }
-.conveyer1, .conveyer2, .conveyer3 {
+.conveyer {
+  width: 100%;
+}
+.screen {
+  height:60%;
+  width:60%;
+  border:5px solid var(--main-color);
+  border-radius: 20px;
+  transform: translateY(20px);
+}
+.sorter {
+  display: flex;
+  height:30%;
+  width:40%;
+  background-color: var(--main-color);
+  border-radius: 20px 20px 0px 0px;
+  position: relative;
+  top:100px;
+  justify-content: flex-end;
+  z-index: 99;
+}
+
+.logos {
+  position: absolute;
+  left:50%;
+  display: flex;
+  width: 50%;
+  height:100%;
+  justify-content: space-between;
+}
+.logo {
+  height:100px;
+  width:100px;
+  animation: move-box 1s linear infinite;
+  background-color: var(--main-color);
+  animation-direction: alternate;
+}
+.hinge {
+  position: relative;
+  right:10px;
+  top:10px;
+  width:5px;
+  height:95%;
+  border-radius: 20px;
+  transform-origin: top left;
+  background-color: var(--main-color);
+  animation: flick 1s ease-in infinite;
+
+}
+.box {
+  --gap: 200px;
+  position: relative;
+  aspect-ratio: 1/1;
+  width:100px;
+  height:100px;
+  background-color: var(--main-color);
+  margin-right:var(--gap);
+  top:100px;
+  animation:move-box 1s linear infinite;
+
+}
+.code {
+  font-size: 80px;
+  color:var(--background)
+}
+.boxes {
+  transform: translateY(-100%) translateX(-15%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height:100%;
+}
+.inline-boxes {
+  display: flex;
   width: 100%;
 }
 .cog {
   width:50px;
   height:100%;
-  fill: var(--main-color);
+  background-color: var(--main-color);
+  clip-path: url("#cog");
+  animation:spin 2s linear infinite;
 }
 .belt, .belt-static {
-  width:100%;
+  width:99%;
   height:50px;
   border: 5px solid var(--main-color);
   border-radius:10px;
@@ -612,7 +709,9 @@ top:20%;
   top:15%;
  }
 }
-
+.svgs {
+  position: absolute;
+}
 @media (max-width:750px) {
   .svg1, .svg2 {
     width: 800px;
@@ -628,8 +727,14 @@ top:20%;
 }
 
 @media (max-width:500px) {
-  .waves {
+  .boxes {
+    transform: translateY(-100%) translateX(-80%);
   }
 
+}
+@media (max-width:400px) {
+  .boxes {
+    transform: translateY(-100%) translateX(-110%);
+  }
 }
 

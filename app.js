@@ -109,8 +109,8 @@ $("#gear").on("click", function (e) {
             $(".pour-left").css( "left", "200px");
           });
         } else {
-          $(".pour-right").animate({ right: "50px" }, 1000);
-          $(".pour-left").animate({ left: "-50px" }, 1000);
+          $(".pour-right").animate({ right: "40%" }, 1000);
+          $(".pour-left").animate({ left: "-40%" }, 1000);
           $('.pour-right').removeAttr("style");
         }
       },
