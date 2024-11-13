@@ -7,18 +7,42 @@ function initListeners() {
   $("#scrollBar").css("height", `${$(document.body).height()}px`);
   $("#scrollBackground").css("height", `${$(document.body).height()}px`);
   $("#color").val($(":root").css("--main-color"));
+  $('.project').slick();
 }
 $(window).scroll(function () {
   const windowHeight = $(window).height();
   const scrollTop = $(window).scrollTop();
   const scrollHeight = $(document).height() - $(window).height();
   const scrollRatio = scrollTop / scrollHeight;
-
+  const windowWidth = $(window).width();
+  const halfWaypoint = windowWidth / 1.5;
+  
+ 
+  $(".left").each(function () {
+    const boxPosition = $(this).position().left;
+    if (boxPosition > halfWaypoint) {
+      $(this).css("opacity", `0`);
+    }
+    else {
+      $(this).css("opacity", `1`);
+    }
+  })
+  
   const boxHeight = $("#scrollTest").outerHeight();
 
   const thumbPosition = scrollRatio * (windowHeight - boxHeight);
 
   $("#scrollTest").css("top", `calc(${thumbPosition}px + 10px)`);
+});
+$(window).resize(function () {
+  const windowWidth = $(window).width();
+  const halfWaypoint = windowWidth / 1.5;
+  $(".left").each(function () {
+    const boxPosition = $(this).position().left;
+    if (boxPosition > halfWaypoint) {
+      $(this).css("opacity", `0`);
+    }
+  })
 });
 
 function getScrollbarThumbPosition(element) {
@@ -98,14 +122,14 @@ $("#gear").on("click", function (e) {
       complete: function () {
         if (rotation % 720 == 0) {
           $(".pour-right").animate(
-            { right: "-150px" },
+            { right: "-250px" },
             1000,
             
             function () {
-              $(".pour-right").css( "right", "200px");
+              $(".pour-right").css( "right", "280px");
             }
           );
-          $(".pour-left").animate({ left: "-200px" }, 1000, function () {
+          $(".pour-left").animate({ left: "-290px" }, 1000, function () {
             $(".pour-left").css( "left", "200px");
           });
         } else {
@@ -117,3 +141,4 @@ $("#gear").on("click", function (e) {
     }
   );
 });
+

@@ -206,15 +206,21 @@ z-index: 999;
   
 }
 .gear {
+  
+  width:100px;
+  height:100px;
+  background-color: var(--main-color);
+  clip-path: url('#gearSVG');
+}
+.gear-click {
   position: relative;
   top:2%;
   left:2%;
-  width:50px;
-  height:50px;
-  background-color: var(--main-color);
-  clip-path: url('#gearSVG');
+  width:100px;
+  height:100px;
   cursor: pointer;
 }
+
 .pipes {
   width:10%;
   display: flex;
@@ -292,14 +298,35 @@ html {
   mask-repeat: no-repeat;
   border-radius: 30px;
   position: relative;
-  animation:squish 2s infinite ease-in-out;
   border: 5px solid var(--main-color);
   z-index: 99;
   background-color: var(--background);
+  display: flex;
+  flex-direction: column;
 
 }
 .project-grid {
   display: none;
+}
+.project-carousel {
+  width:80%;
+  height:80%;
+  background-color: var(--main-color);
+  border-radius: 10px;
+}
+.project {
+  width:100px;
+  height:100px;
+  background-color: var(--background);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  height:100%;
+  position: relative;
 }
 .title {
   display: flex;
@@ -420,7 +447,7 @@ use {
 }
 .pour-right {
    position: relative;
-  right:200px;
+  right:290px;
 }
 .pour-left {
   position: relative;
@@ -594,6 +621,8 @@ top:20%;
   width:50%;
 }
 .contact {
+  position: relative;
+  z-index: 1000;
   height:90vh;
   width: 100%;
 }
@@ -663,12 +692,26 @@ top:20%;
   background-color: var(--main-color);
   margin-right:var(--gap);
   top:100px;
-  animation:move-box 1s linear infinite;
+  animation: move-box 1s linear infinite;
 
 }
+.gap {
+  margin-right: var(--gap);
+  /* position: relative; */
+  /* left:20%; */
+}
+.boxLabel {
+position: relative;
+bottom: 80px;
+z-index: 60 !important;
+
+}
+
 .code {
+  position: relative;
+  z-index: 105;
   font-size: 80px;
-  color:var(--background)
+  color:var(--background);
 }
 .boxes {
   transform: translateY(-100%) translateX(-15%);
@@ -677,17 +720,42 @@ top:20%;
   justify-content: space-between;
   width: 100%;
   height:100%;
+  position: relative;
+  z-index: 99;
 }
-.inline-boxes {
-  display: flex;
-  width: 100%;
+.reverse {
+  
+  animation-direction: reverse !important;
 }
+.boxBottom {
+  position: relative;
+  top:120%;
+}
+
 .cog {
   width:50px;
   height:100%;
   background-color: var(--main-color);
   clip-path: url("#cog");
   animation:spin 2s linear infinite;
+}
+.half {
+  width:100%;
+  position: absolute;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  
+}
+.shroud {
+  width:50%;
+  height:100%;
+  background-color: var(--background);
+  transform: translateY(-230%);
+  position: relative;
+  z-index: 70
 }
 .belt, .belt-static {
   width:99%;
