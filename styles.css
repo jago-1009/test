@@ -42,7 +42,18 @@
 
   }
 }
+@keyframes wiggleX {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(30px);
+  }
+  100% {
+    transform: translateX(0px);
 
+  }
+}
 @keyframes move-forever {
   0% {
       transform: translate3d(-90px, 0, 0);
@@ -130,6 +141,8 @@ body {
     margin: 0;
     
 }
+
+
 html, body {
   overflow-x: clip;
   margin: 0;
@@ -146,7 +159,17 @@ body > * {
   top:0;
   left:0;
   background-color: var(--background);
-  z-index:9999998 ;
+  z-index:9999998;
+}
+.sig-arrow {
+  height:100px;
+  width: 100px;
+  position: absolute;
+  right:30%;
+  top:250px;
+  background-color: var(--main-color);
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  animation: wiggleX 1.5s infinite;
 }
 .flicker {
   animation: flicker 1.5s forwards;
@@ -613,6 +636,7 @@ img {
   width:100%;
   height:100%;
   position: relative;
+  z-index:98;
 }
 .title {
   display: flex;
@@ -649,6 +673,7 @@ img {
   position: relative;
   transform: translateY(-29px);
 }
+
 .nudge {
   position: relative;
   bottom:100px;
@@ -1062,6 +1087,14 @@ z-index: 60 !important;
   display: flex;
   justify-content: space-between;
 }
+
+.run, .run * {
+  animation:none;
+}
+.fixed {
+  position: fixed;
+}
+
 /* Growing for Desktop */
 @media (min-width: 800px) {
   .nudge3 {

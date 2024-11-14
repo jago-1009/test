@@ -19,13 +19,15 @@
     </script>
   </head>
   <body class="tomorrow-regular">
-    <div class="page-cover" id="pageCover"></div>
-    <div class="whistle">
+    <div class="page-cover" id="pageCover">
+      <div class="sig-arrow"></div>
+    </div>
+    <div class="whistle fixed" id="whistle-anim">
       <div class="whistle-head"></div>
       <div class="whistle-body"></div>
       <div class="steam" id="steam"></div>
     </div>
-    <div class="lever" id="lever">
+    <div class="lever fixed" id="lever">
       <div class="lever-head"  >
         <div class="lever-head-on" id="leverHeadOn"></div>
         <div class="lever-head-off" id="leverHeadOff"></div>
@@ -176,7 +178,7 @@
       </svg>
     </div>
 
-    <div id="waves" class="waves">
+    <div id="waves" class="waves animation run">
       <svg
         class="svg3"
         xmlns="http://www.w3.org/2000/svg"
@@ -224,7 +226,7 @@
     </div>
     <div class="bridge">
       <div class="funnel"></div>
-      <div class="liquid">
+      <div class="liquid animation run">
         <div class="fluid">
           <svg
             class="flow top"
@@ -704,7 +706,7 @@
     </div>
       <div class="conveyer">
           <div class="inline-boxes">
-        <div class="boxes">
+        <div class="boxes ">
           <div class="box left"></div>
           <div class="box left"></div>
           <div class="box left"></div>
@@ -726,10 +728,10 @@
         
       </div>
         <div class="belt">
-         <div class="cog"></div>
-          <div class="cog"></div>
+         <div class="cog animation run"></div>
+          <div class="cog animation run"></div>
         </div>
-        <div class="boxes boxLabel">
+        <div class="boxes boxLabel ">
           
           <div class="box label"><div class="code">&lt;/&gt;</div></div>
           <div class="box label"><div class="code">&lt;/&gt;</div></div>
@@ -757,7 +759,7 @@
         <div class="screen"></div>
         <div class="conveyer">
           
-          <div class="boxes">
+          <div class="boxes animation run">
             <div class="box reverse boxBottom label"><div class="code">&lt;/&gt;</div></div>
             <div class="box reverse boxBottom label"><div class="code">&lt;/&gt;</div></div>
             <div class="box reverse boxBottom label"><div class="code">&lt;/&gt;</div></div>
@@ -776,8 +778,8 @@
             
           </div>
           <div class="belt">
-           <div class="cog reverse"></div>
-            <div class="cog reverse"></div>
+           <div class="cog animation run reverse"></div>
+            <div class="cog animation run reverse"></div>
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ function initListeners() {
   $("#scrollBar").css("height", `${$(document.body).height()}px`);
   $("#scrollBackground").css("height", `${$(document.body).height()}px`);
   $("#color").val($(":root").css("--main-color"));
-  $('.project').slick();
+  
 }
 $(window).scroll(function () {
   const windowHeight = $(window).height();
@@ -49,7 +49,7 @@ $(window).scroll(function () {
     })
    
    
-   
+  
   
   
   const boxHeight = $("#scrollTest").outerHeight();
@@ -150,12 +150,18 @@ $('#lever').on("click", function (e) {
     
   }
   else {
-    
+    window.scrollTo(0, 0)
     $leverOn.addClass("lever-switch");
     $leverOn.css("display", "block");
     $leverOff.css("display", "none");
+    
     setTimeout(() => {
+      
       $('#steam').addClass('steam-anim')
+     
+      $("#lever").removeClass('fixed')
+      $("#whistle-anim").removeClass('fixed')
+      
     }, 500)
     setTimeout(() => {
       $pageCover.css('animation-play-state', 'running');
@@ -203,4 +209,22 @@ $("#gear").on("click", function (e) {
     }
   );
 });
+$(document).ready(function() {
+  $(".animation").each(function () {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          console.log('is intersecting');
+          $(entry.target).removeClass("run");
+        } else {
+          $(entry.target).addClass("run");
+        }
+      });
+    });
+    observer.observe(this);
+  });
+});
 
+$(document).ready(function () {
+  initListeners();
+})
