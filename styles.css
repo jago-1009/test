@@ -527,7 +527,7 @@ img {
 }
 
 #item-1:checked ~ .cards #project-2, #item-2:checked ~ .cards #project-3, #item-3:checked ~ .cards #project-1 {
-  transform: translatex(40%) scale(.8);
+  transform: translatex(50%) scale(.8);
   opacity: .4;
   z-index: 0;
 }
@@ -556,7 +556,7 @@ img {
   display: flex;
   align-items: center;
   margin-bottom: 12px;
-  height: 40px;
+  height: 50px;
   overflow: hidden;
 }
 
@@ -565,6 +565,7 @@ img {
 .project-info {
   width: 100%;
   display: block;
+  margin-bottom: 5px;
 }
 
 .project-info .title {
@@ -618,15 +619,15 @@ img {
 }
 
 #item-2:checked ~ .info-card #test {
-  transform: translateY(0);
+  transform: translateY(0px);
 }
 
 #item-2:checked ~ .info-card #test  {
-  transform: translateY(-40px);
+  transform: translateY(-50px);
 }
 
 #item-3:checked ~ .info-card #test  {
-  transform: translateY(-80px);
+  transform: translateY(-95px);
 }
 .container {
   display: flex;
@@ -1177,4 +1178,9 @@ z-index: 60 !important;
     transform: translateY(-100%) translateX(-110%);
   }
 }
-
+@media (max-width:400px) {
+  .title {
+    font-size: 12px !important;
+  }
+  
+}
