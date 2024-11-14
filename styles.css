@@ -1,6 +1,6 @@
 /* Variables */
 :root {
-  --background:#2e2e2e;
+  --background:#1B1F24;
   --main-color: #c0ff33;
   --main-opaque:var(--main-color, 0.5);
   --blur: blur(50px)
@@ -92,21 +92,17 @@
   }
 }
 @keyframes lever {
-  from {
-    rotate: 0deg;
+  0% {
+    transform: translateY(0);
   }
-  to {
-    rotate: 90deg;
+  25% {
+    transform: translateY(50px);
   }
-}
-@keyframes lever-reverse {
-  from {
-    rotate: 0;
-  }
-  to {
-    rotate: -90deg;
+  100% {
+    transform: translateY(-200px);
   }
 }
+
 @keyframes flicker {
 	0%, 19.9%, 22%,  64%, 64.9%, 70% {
 		opacity: 0.99;
@@ -162,11 +158,11 @@ body > * {
   z-index:9999998;
 }
 .sig-arrow {
-  height:100px;
-  width: 100px;
+  height:50px;
+  width: 50px;
   position: absolute;
-  right:30%;
-  top:250px;
+  right:10dvw;
+  top:20px;
   background-color: var(--main-color);
   clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
   animation: wiggleX 1.5s infinite;
@@ -361,6 +357,7 @@ z-index: 999;
   z-index: 9999999;
 }
 .lever {
+  translate: 0 -200px;
   right:0;
 }
 .lever-body {
@@ -368,28 +365,46 @@ z-index: 999;
   height:150px;
   position: absolute;
   right:0;
-  border-radius: 50% 0 0 50%   ;
   width: 75px;
   cursor: pointer;
 }
-.lever-head-on, .lever-head-off, .lever-head {
-  width:100%;
-  height:10px;
+.lever-head {
+  width:10px;
+  height:30%;
+  position: absolute;
+  right:7%;
   transform-origin: right;
   cursor: pointer;
-  /* animation: lever 1s ease-in normal forwards ; */
+  background-color: var(--main-color);
+  /* animation: lever 1s ease-in-out normal forwards ; */
+}
+.lever-handle {
+  position: absolute;
+  top:25%;
+  border-radius: 10px;
+  right:calc(7% - 5px);
+  height:5%;
+  width:20px;
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.bar {
+  width:100%;
+  background-color: var(--background);
+  height:2px;
+}
+.lever {
+  width: 100%;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
 }
 
-.lever-head-on, .lever-head-off  {
-  background-color: var(--main-color);
-  transform: rotate(-45deg);
 
-}
-.lever-head-off {
-  display: none;
-  background-color: var(--main-color);
-  transform: rotate(45deg);
-}
 .whistle-body {
   transform-origin: bottom left;
   transform: rotate(-60deg);
@@ -483,7 +498,7 @@ input[type=radio] {
 .card {
   position: absolute;
   width: 60%;
-  aspect-ratio: 1/1;
+  aspect-ratio: 3/2;
   left: 0;
   right: 0;
   margin: auto;
@@ -556,7 +571,7 @@ img {
   display: flex;
   align-items: center;
   margin-bottom: 12px;
-  height: 50px;
+  height: 75px;
   overflow: hidden;
 }
 
@@ -623,11 +638,11 @@ img {
 }
 
 #item-2:checked ~ .info-card #test  {
-  transform: translateY(-50px);
+  transform: translateY(-80px);
 }
 
 #item-3:checked ~ .info-card #test  {
-  transform: translateY(-95px);
+  transform: translateY(-160px);
 }
 .container {
   display: flex;
@@ -688,7 +703,7 @@ img {
 .nudge3 {
   transform: translateY(-200px);
 }
-.nudge4, .nudge5 {
+.nudge4, .nudge5, .nudge6, .nudge7, .nudge8 {
   display: none;
 }
 .description {
@@ -777,14 +792,23 @@ use {
   background-color: var(--main-color);
 }
 .intake {
-  position: absolute;
-  height:20%;
-  width:20%;
+  position: relative;
+  height:100px;
+  width:100%;
+
+ 
+  transform-origin: center;
+  transform: translateY(200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.in-funnel {
   clip-path: polygon(0 0, 100% 0, 60% 50%, 60% 70%, 40% 70%, 40% 51%);
   z-index: 10;
+  width:30%;
+  height:100%;
   background-color: var(--main-color);
-  left:40%;
-  transform: translateY(175px);
 }
 #wave{
   animation: move-forever 10s linear infinite;
@@ -960,6 +984,11 @@ top:20%;
   border:5px solid var(--main-color);
   border-radius: 20px;
   transform: translateY(20px);
+  display:flex;
+  justify-content: center;
+}
+.screen * {
+  color:var(--main-color)
 }
 .sorter {
   display: flex;
@@ -1045,11 +1074,9 @@ z-index: 60 !important;
   animation-direction: reverse !important;
 }
 .lever-switch {
-   animation: lever 0.8s ease-in normal forwards ;
+   animation: lever 0.8s ease-in-out normal forwards ;
 }
-.lever-switch-reverse {
-  animation: lever-reverse 0.8s ease-in normal forwards
-}
+
 .boxBottom {
   position: relative;
   top:120%;
@@ -1094,6 +1121,14 @@ z-index: 60 !important;
 }
 .fixed {
   position: fixed;
+}
+.learn-more {
+  width:150px;
+  height:50px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--background);
+  color:var(--main-color)
 }
 
 /* Growing for Desktop */
@@ -1158,11 +1193,23 @@ z-index: 60 !important;
   }
   .nudge4 {
     display: block;
-    translate: 0 -170px;
+    translate: 0 -230px;
   }
   .nudge5 {
     display: block;
-    translate: 0 -200px;
+    translate: 0 -300px;
+  }
+  .nudge6 {
+    display: block;
+    translate: 0 -330px;
+  }
+  .nudge7 {
+    display: block;
+    translate: 0 -350px;
+  }
+  .nudge8 {
+    display: block; 
+    translate: 0 -370px;
   }
 }
 

@@ -1,6 +1,6 @@
 import { checkColors } from "./lib/color-checker.js";
-let dark = "#2e2e2e";
-let light = "#fffff0";
+let dark = "#1B1F24";
+let light = "#ffffff";
 let isDark = true;
 let rotation = 0;
 let isOn = false;
@@ -129,32 +129,26 @@ $(".colorBtn").on("click", (e) => {
   setColor(color);
   $("#color").val(color);
 });
-$('#lever').on("click", function (e) {
-  const $leverOn = $('#leverHeadOn');
-  const $leverOff = $('#leverHeadOff');
+$('.lever-body').on("click", function (e) {
+  const $lever = $(".lever-head")
+  const $leverHandle = $(".lever-handle")
   const $pageCover = $('#pageCover');
   isOn = !isOn;
   console.log(isOn)
-  if (!isOn) {
-    $leverOff.addClass("lever-switch-reverse")
-      $leverOn.css("display", "none");
-      $leverOff.css("display", "block");
-      setTimeout(() => {
-        $('#steam').removeClass('steam-anim')
-      }, 500)
+
+    $lever.addClass("lever-switch")
+    $leverHandle.addClass("lever-switch")
+
       setTimeout(() => {
         $pageCover.removeClass("flicker");
         $pageCover.addClass("flicker-reverse");
       }, 1000)
       
     
-  }
-  else {
+  
+
     window.scrollTo(0, 0)
-    $leverOn.addClass("lever-switch");
-    $leverOn.css("display", "block");
-    $leverOff.css("display", "none");
-    
+ 
     setTimeout(() => {
       
       $('#steam').addClass('steam-anim')
@@ -173,7 +167,7 @@ $('#lever').on("click", function (e) {
     }, 2000)
   }
 
-})
+)
 $("#gear").on("click", function (e) {
   const $gear = $(this);
   rotation += 360;
