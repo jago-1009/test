@@ -28,11 +28,11 @@
       <div class="steam" id="steam"></div>
     </div>
     <div class="lever fixed" id="lever">
-      <div class="lever-head lever-body">
+      <div id="leverHead" class="lever-head lever-body">
      
        
       </div>
-      <div class="lever-handle lever-body">
+      <div id="leverHandle" class="lever-handle lever-body">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
@@ -803,9 +803,9 @@
         </div>
       </div>
     </div>
-    <div class="gap" id="projects"></div>
+    <div class="gap" ></div>
     <div class="intake"><div class="in-funnel"></div></div>
-    <div class="projects" >
+    <div class="projects" id="projects">
       <div class="pipes">
         <div class="pipe">
           <div class="pipe-glass">
@@ -824,65 +824,45 @@
         </div>
       </div>
       <div class="container">
-        <div class="project-carousel">
+        <div class="project-carousel" id="carousel">
+          <div class="gridBtn" id="gridBtn">
+          <div class="gridIcons">
+           
+          </div>
+          </div>
           <div class="container">
-            <input type="radio" name="slider" id="item-1" checked>
-            <input type="radio" name="slider" id="item-2">
-            <input type="radio" name="slider" id="item-3">
+        
           <div class="cards">
-            <label class="card" for="item-1" id="project-1">
-              <img src="./assets/img/ePortfolio-Screenshot-Graphic.PNG" alt="project">
+            <div class="chevron-left" for="arrow-left" id="chevron-left"></div>
+            <div project-label="project1" class="project project1" id="center">1</div>
+            <div project-label="project2" class="project project2" >2</div>
+            <div project-label="project3" class="project project3" >3</div>
             </label>
-            <label class="card" for="item-2" id="project-2">
-              <img src="https://images.unsplash.com/photo-1559386484-97dfc0e15539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80" alt="project">
-            </label>
-            <label class="card" for="item-3" id="project-3">
-              <img src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="project">
-            </label>
+            <div class="chevron-right" id="chevron-right"></div>
           </div>
           <div class="info-card">
             <div class="upper-part">
               
-              <div class="info-area" id="test">
-                <label class="project-info" id="project-info-1">
-                  <div class="title">IU ePortfolio Admin Interface</div>
-                  <div class="sub-line">
-                    <div class="subtitle"><button class="learn-more">Learn More</button></div>
-                    
-                  </div>
-                  
-                </label>
-                <label class="project-info" id="project-info-2">
-                  <div class="title">Project 2</div>
-                  <div class="sub-line">
-                    <div class="subtitle"><button class="learn-more">Learn More</button></div>
-                  </div>
-                  
-                </label>
-                <label class="project-info" id="project-info-3">
-                  <div class="title">Project 3</div>
-                  <div class="sub-line">
-                    <div class="subtitle"><button class="learn-more">Learn More</button></div>
-                  </div>
-                  
-                </label>
+              <div class="info-area">
+                
               </div>
             </div>
            
           </div>
         </div>
-          <!-- <div class="gridBtn"></div>
-          <div class="project project1"></div>
-          <div class="project project2"></div>
-          <div class="project project3"></div>
-          <div class="project project4"></div> -->
+          
+        
         </div>
-        <div class="project-grid">
-          <div class="carBtn"></div>
-          <div class="project project1"></div>
-          <div class="project project2"></div>
-          <div class="project project3"></div>
-          <div class="project project4"></div>
+        <div class="project-grid" id="grid">
+          <div class="carouselBtn" id="carouselBtn">
+            <div class="carouselIcon main"><div class="carouselIcon side c-left"></div>
+            <div class="carouselIcon side c-right"></div></div>
+            
+          </div>
+          <div class="project-grid project-grid-1"></div>
+          <div class="project-grid project-grid-2"></div>
+          <div class="project-grid project-grid-3"></div>
+          <div class="project-grid project-grid-4"></div>
         </div>
       </div>
       </div>
@@ -1103,6 +1083,15 @@
 <svg class="svg" width="0" height="0">
   <clipPath id="steamSVG" clipPathUnits="objectBoundingBox"><path d="M0.552,0.688 L0.552,0.383 C0.552,0.353,0.528,0.329,0.5,0.329 H0.5 C0.471,0.329,0.448,0.353,0.448,0.383 L0.448,0.688 C0.448,0.718,0.472,0.742,0.5,0.742 H0.5 C0.529,0.742,0.552,0.718,0.552,0.688 M0.315,0.563 C0.303,0.536,0.272,0.525,0.246,0.537 C0.221,0.55,0.21,0.582,0.222,0.609 L0.387,0.969 C0.396,0.989,0.415,1,0.434,1 C0.442,1,0.449,0.998,0.456,0.995 C0.482,0.982,0.493,0.95,0.481,0.923 L0.315,0.563 M0.754,0.537 C0.728,0.525,0.697,0.536,0.685,0.563 L0.519,0.923 C0.507,0.95,0.518,0.982,0.544,0.995 C0.551,0.998,0.558,1,0.566,1 C0.585,1,0.604,0.989,0.613,0.969 L0.778,0.609 C0.79,0.582,0.779,0.55,0.754,0.537 M0.855,0.285 C0.813,0.118,0.669,0,0.5,0 C0.331,0,0.187,0.118,0.145,0.285 C0.058,0.32,0,0.407,0,0.507 C0,0.597,0.048,0.678,0.125,0.719 C0.151,0.733,0.182,0.722,0.195,0.696 C0.208,0.669,0.198,0.637,0.172,0.623 C0.13,0.601,0.104,0.556,0.104,0.507 C0.104,0.445,0.144,0.393,0.201,0.379 C0.222,0.374,0.237,0.357,0.241,0.336 C0.262,0.204,0.371,0.108,0.5,0.108 C0.629,0.108,0.738,0.204,0.759,0.336 C0.763,0.357,0.778,0.375,0.799,0.379 C0.856,0.393,0.896,0.445,0.896,0.507 C0.896,0.559,0.866,0.607,0.82,0.627 C0.793,0.639,0.781,0.671,0.792,0.698 C0.8,0.718,0.82,0.731,0.84,0.731 C0.847,0.731,0.853,0.73,0.86,0.727 C0.945,0.689,1,0.603,1,0.507 C1,0.407,0.942,0.32,0.855,0.285"></path></clipPath>
 </svg>
+<svg width="0" height="0" viewBox="0 0 1 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <clipPath id="grid-icons" clipPathUnits="objectBoundingBox">
+  <path d="M0 0.0877193C0 0.0392733 0.0392733 0 0.0877193 0H0.350877C0.399323 0 0.438596 0.0392733 0.438596 0.0877193V0.350877C0.438596 0.399323 0.399323 0.438596 0.350877 0.438596H0.0877193C0.0392733 0.438596 0 0.399323 0 0.350877V0.0877193Z" fill="black"/>
+  <path d="M0 0.649123C0 0.600677 0.0392733 0.561404 0.0877193 0.561404H0.350877C0.399323 0.561404 0.438596 0.600677 0.438596 0.649123V0.912281C0.438596 0.960727 0.399323 1 0.350877 1H0.0877193C0.0392733 1 0 0.960727 0 0.912281V0.649123Z" fill="black"/>
+  <path d="M0.561404 0.649123C0.561404 0.600677 0.600677 0.561404 0.649123 0.561404H0.912281C0.960727 0.561404 1 0.600677 1 0.649123V0.912281C1 0.960727 0.960727 1 0.912281 1H0.649123C0.600677 1 0.561404 0.960727 0.561404 0.912281V0.649123Z" fill="black"/>
+  <path d="M0.561404 0.0877193C0.561404 0.0392733 0.600677 0 0.649123 0H0.912281C0.960727 0 1 0.0392733 1 0.0877193V0.350877C1 0.399323 0.960727 0.438596 0.912281 0.438596H0.649123C0.600677 0.438596 0.561404 0.399323 0.561404 0.350877V0.0877193Z" fill="black"/>
+  </clipPath>
+  </svg>
+  
     </div>
 
     <script type="module" src="./lib/color-checker.js"></script>

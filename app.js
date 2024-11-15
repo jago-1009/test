@@ -4,6 +4,7 @@ let light = "#ffffff";
 let isDark = true;
 let rotation = 0;
 let isOn = false;
+let projects = ['project1', 'project2', 'project3'];
 function initListeners() {
   $("#scrollBar").css("height", `${$(document.body).height()}px`);
   $("#scrollBackground").css("height", `${$(document.body).height()}px`);
@@ -112,7 +113,7 @@ function setColor(color) {
   var background = $(":root").css("--background");
 
   let contrastRatio = contrast(color, background);
-  console.log(contrastRatio);
+  // console.log(contrastRatio);
   if (contrastRatio < 7.5) {
     if (isDark == true) {
       $(":root").get(0).style.setProperty("--background", light);
@@ -130,20 +131,20 @@ $(".colorBtn").on("click", (e) => {
   $("#color").val(color);
 });
 $('.lever-body').on("click", function (e) {
-  const $lever = $(".lever-head")
-  const $leverHandle = $(".lever-handle")
-  const $pageCover = $('#pageCover');
-  isOn = !isOn;
-  console.log(isOn)
 
-    $lever.addClass("lever-switch")
-    $leverHandle.addClass("lever-switch")
+  const $pageCover = $('#pageCover');
+
+      $('#leverHead').addClass('lever-switch');
+      $('#leverHandle').addClass('lever-switch');
+
 
       setTimeout(() => {
         $pageCover.removeClass("flicker");
         $pageCover.addClass("flicker-reverse");
       }, 1000)
-      
+      setTimeout(() => {
+        $("#lever").css('display', 'none');
+      },2000)
     
   
 
@@ -208,17 +209,150 @@ $(document).ready(function() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          console.log('is intersecting');
+          // console.log('is intersecting');
           $(entry.target).removeClass("run");
         } else {
           $(entry.target).addClass("run");
         }
       });
-    });
+    }, {rootMargin: '200px 0px 0px 0px'});
     observer.observe(this);
   });
 });
+$("#chevron-left").on("click", function (e) {
+  let leftSlideNum ;
+  let rightSlideNum ;
+  let leftSlide;
+  let rightSlide;
+  var slides = $('.project');
+  slides.each(function (index) {
+    var slide = $(this);
+    if (slide.attr('id') == 'center') {
+      slide.removeAttr('id');
+      
+      console.log(slide)
+      let currentSlide = $(slide).attr('project-label')
+      let currentIndex = projects.indexOf(currentSlide)
+      
+    
+      if (currentIndex == -1 ) {
+        currentIndex = 2
+      }
+      console.log(currentIndex)
+      if (currentIndex - 1 < 0) {
+        leftSlideNum = 2; 
+      }
+      else {
+        leftSlideNum = currentIndex - 1
+      }
+      if (currentIndex + 1 > 2) {
+        rightSlideNum = 0;
+      }
+      else {
+        rightSlideNum = currentIndex + 1
+      }
+       leftSlide = $(`.${projects[leftSlideNum]}`)
+       rightSlide = $(`.${projects[rightSlideNum]}`)
+      // console.log(leftSlide)
+      
+      
+      
+    }
+  })
+  leftSlide.attr('id', 'center');
+  // console.log(rightSlide)
+  return initCarousel();
+})
+$("#chevron-right").on("click", function (e) {
+  let leftSlideNum ;
+  let rightSlideNum ;
+  let leftSlide;
+  let rightSlide;
+  var slides = $('.project');
+  slides.each(function (index) {
+    var slide = $(this);
+    if (slide.attr('id') == 'center') {
+      slide.removeAttr('id');
+      
+      console.log(slide)
+      let currentSlide = $(slide).attr('project-label')
+      let currentIndex = projects.indexOf(currentSlide)
+      
+    
+      if (currentIndex == -1 ) {
+        currentIndex = 2
+      }
+      console.log(currentIndex)
+      if (currentIndex - 1 < 0) {
+        leftSlideNum = 2; 
+      }
+      else {
+        leftSlideNum = currentIndex - 1
+      }
+      if (currentIndex + 1 > 2) {
+        rightSlideNum = 0;
+      }
+      else {
+        rightSlideNum = currentIndex + 1
+      }
+       leftSlide = $(`.${projects[leftSlideNum]}`)
+       rightSlide = $(`.${projects[rightSlideNum]}`)
+      // console.log(leftSlide)
+      
+      
+      
+    }
+  })
+  rightSlide.attr('id', 'center');
+  // console.log(rightSlide)
+  return initCarousel();
+})
+function initCarousel() {
+let currentSlide = $('#center');
+currentSlide.removeAttr('style')
+for (let i=0;i<projects.length;i++){  
+  let projNum = projects[i];
+  let slide = $(`.${projNum}`)
+  let isCenter = slide.attr('id')
+  let leftSlide = 0;
+  let rightSlide = 1;
+  if (isCenter) {
+    // console.log(slide)
+    let currentIndex = slide.index() - 1 
+    // console.log(currentIndex)
+    if (currentIndex - 1 < 0) {
+      leftSlide = 2; 
+    }
+    else {
+      leftSlide = currentIndex - 1
+    }
+    if (currentIndex + 1 > 2) {
+      rightSlide = 0;
+    }
+    else {
+      rightSlide = currentIndex + 1
+    }
+    let left = $(`.${projects[leftSlide]}`)
+    let right = $(`.${projects[rightSlide]}`)
+    left.css('transform', 'translateX(-30%) scale(0.9)')
+    left.css('opacity', '0.5')
+    right.css('transform', 'translateX(30%) scale(0.9)')
+    right.css('opacity', '0.5')
+  }
+
+}
+}
+$("#gridBtn").on('click', function() {
+  $('#carousel').hide()
+  $("#grid").show()
+}) 
+$("#carouselBtn").on('click', function() {
+  $('#grid').hide()
+  $("#carousel").show()
+}) 
+
 
 $(document).ready(function () {
   initListeners();
+  initCarousel();
 })
