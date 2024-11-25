@@ -9,6 +9,7 @@ function initListeners() {
   $("#scrollBar").css("height", `${$(document.body).height()}px`);
   $("#scrollBackground").css("height", `${$(document.body).height()}px`);
   $("#color").val($(":root").css("--main-color"));
+  $('#grid').hide();
   
 }
 $(window).scroll(function () {
@@ -169,41 +170,41 @@ $('.lever-body').on("click", function (e) {
   }
 
 )
-$("#gear").on("click", function (e) {
-  const $gear = $(this);
-  rotation += 360;
-  // Reset the rotation angle to 0 for each click
+// $("#gear").on("click", function (e) {
+//   const $gear = $(this);
+//   rotation += 360;
+//   // Reset the rotation angle to 0 for each click
 
-  // Rotate the gear
-  $gear.animate(
-    { deg: rotation },
-    {
-      duration: 1200,
-      step: function (now) {
-        $gear.css({ transform: `rotate(${now}deg)` });
-      },
-      complete: function () {
-        if (rotation % 720 == 0) {
-          $(".pour-right").animate(
-            { right: "-250px" },
-            1000,
+//   // Rotate the gear
+//   $gear.animate(
+//     { deg: rotation },
+//     {
+//       duration: 1200,
+//       step: function (now) {
+//         $gear.css({ transform: `rotate(${now}deg)` });
+//       },
+//       complete: function () {
+//         if (rotation % 720 == 0) {
+//           $(".pour-right").animate(
+//             { right: "-250px" },
+//             1000,
             
-            function () {
-              $(".pour-right").css( "right", "280px");
-            }
-          );
-          $(".pour-left").animate({ left: "-290px" }, 1000, function () {
-            $(".pour-left").css( "left", "200px");
-          });
-        } else {
-          $(".pour-right").animate({ right: "40%" }, 1000);
-          $(".pour-left").animate({ left: "-40%" }, 1000);
-          $('.pour-right').removeAttr("style");
-        }
-      },
-    }
-  );
-});
+//             function () {
+//               $(".pour-right").css( "right", "280px");
+//             }
+//           );
+//           $(".pour-left").animate({ left: "-290px" }, 1000, function () {
+//             $(".pour-left").css( "left", "200px");
+//           });
+//         } else {
+//           $(".pour-right").animate({ right: "40%" }, 1000);
+//           $(".pour-left").animate({ left: "-40%" }, 1000);
+//           $('.pour-right').removeAttr("style");
+//         }
+//       },
+//     }
+//   );
+// });
 $(document).ready(function() {
   $(".animation").each(function () {
     const observer = new IntersectionObserver((entries) => {

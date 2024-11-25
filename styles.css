@@ -476,9 +476,7 @@ html {
   position: relative;
   z-index: 99;
 }
-.project-grid {
-  display: none;
-}
+
 .project-carousel {
   width:80%;
   height:100%;
@@ -488,6 +486,25 @@ html {
   justify-content: center;
  
   
+}
+.project-grid {
+  width:100%;
+  height:100%;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s all ease-in-out;
+}
+.grid-item {
+  width:200px;
+  aspect-ratio: 3/2;
+  margin:20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-color);
 }
 .project-carousel * {
   transition: 0.5s all ease-in-out;
@@ -514,7 +531,7 @@ html {
   justify-content: space-evenly;
   border-radius: 50%;
   cursor: pointer;
-  
+  z-index: 105;
 }
 .gridBtn {
   flex-wrap: wrap;
@@ -791,7 +808,10 @@ use {
   left: 0;
   
 }
-
+.fast-left-top {
+  translate: -300px -20px;
+  animation: move-forever 10s linear infinite;
+}
 .bridge {
   height:100vh;
   width: 100%;
