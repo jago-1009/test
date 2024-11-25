@@ -161,11 +161,12 @@ body > * {
   height:50px;
   width: 50px;
   position: absolute;
-  right:20%;
-  top:20px;
+  right:10%;
+  top:150px;
   background-color: var(--main-color);
   clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
   animation: wiggleX 1.5s infinite;
+  rotate: 35deg;
 }
 .flicker {
   animation: flicker 1.5s forwards;
@@ -639,12 +640,8 @@ img {
 }
 
 .upper-part {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-  height: 75px;
-  overflow: hidden;
+ text-align: center;
+ transition:0.4s all ease-in-out;
 }
 
 
@@ -698,9 +695,7 @@ img {
 }
 
 .info-area {
-  width: 100%;
-  position: absolute;
-  top: 0;
+ 
   text-align: center;
   transition: transform .4s ease-in;
 }
@@ -1059,11 +1054,27 @@ top:20%;
   border:5px solid var(--main-color);
   border-radius: 20px;
   transform: translateY(20px);
+  background-color: var(--main-color);
   display:flex;
-  justify-content: center;
+ justify-content: flex-start;
+ align-items: center;
+ flex-direction: column;
 }
 .screen * {
-  color:var(--main-color)
+  color:var(--background);
+  text-align: center;
+}
+.socials {
+  font-size:40px;
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+.socials * {
+  margin: 20px;
+}
+.email {
+  font-size: 40px;
 }
 .sorter {
   display: flex;
@@ -1293,7 +1304,10 @@ z-index: 60 !important;
   .boxes {
     transform: translateY(-100%) translateX(-80%);
   }
-
+  .sig-arrow {
+    right:20%;
+    top:15%;
+  }
 }
 @media (max-width:400px) {
   .boxes {
