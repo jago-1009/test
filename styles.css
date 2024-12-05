@@ -560,20 +560,27 @@ html {
   position: absolute;
 }
 .project {
-  width:100px;
-  height:100px;
+  width:50%;
+
   background-color: var(--background);
 }
 input[type=radio] {
   display: none;
 }
 .project {
-  width: 50%;
-  height: 30%;
+
 position: absolute;
-  aspect-ratio: 3/2;
-  background-color: var(--main-color);
+  aspect-ratio: 16/9;
 }
+#project-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#project-links * {
+  margin:10px;
+}
+
 .card {
   position: absolute;
   width: 60%;
@@ -644,6 +651,10 @@ img {
  transition:0.4s all ease-in-out;
 }
 
+.cards img {
+  height:100%;
+  border-radius: 0px;
+}
 
 
 .project-info {
@@ -699,7 +710,10 @@ img {
   text-align: center;
   transition: transform .4s ease-in;
 }
-
+#center {
+  z-index: 99;
+  opacity: 1 !important;
+}
 #item-2:checked ~ .info-card #test {
   transform: translateY(0px);
 }
