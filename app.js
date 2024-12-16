@@ -59,6 +59,9 @@ function initListeners() {
       $('#dialog-github').html('View Github')
       $('#dialog-github').attr('href',projectSelect.viewGithubLink)
     }
+    if (projectSelect.viewGithubLink != "" && projectSelect.viewLiveLink != "") {
+      $("#buffer").html(`|`)
+    }
     $('#dialog-project')[0].showModal();
   })
   $('#dialog-close').on('click', (e) => {

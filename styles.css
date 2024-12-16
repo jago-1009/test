@@ -1334,3 +1334,41 @@ z-index: 60 !important;
   }
   
 }
+#dialog-project {
+  background-color: var(--main-color);
+  border: none;
+  border-radius: 20px;
+  
+}
+#dialog-close {
+  position: absolute;
+  top:20px;
+  right:20px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.links {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.links a {
+  color:var(--main-color);
+  background-color: var(--background);
+  width:100px;
+  text-align: center;
+  height:40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 20px;
+  border: 2px solid var(--background);
+  transition: 0.3s all;
+}
+.links a:hover {
+  border: 2px solid var(--background);
+  background-color: var(--main-color);
+  color: var(--background);
+}
