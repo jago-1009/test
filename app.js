@@ -7,66 +7,34 @@ let isOn = false;
 const projects = ["project1", "project2", "project3"];
 const projectTitle = ['EPortfolio Administrator Interface', 'Attack of the Front End Web Developer', 'ArmorCoach']
 const projectDesc = ["An Adminstrator Interface for IU Indianapolis' ePortfolio Showcase.", "A short story to learn how to use the Svelte Library along with Sveltekit.", "A website for Historical Fencing academies to assign group orders for their students."]
-const projectDialog = {
+const projectLinks = {
   project1: {
-    title: "EPortfolio Administrator Interface",
-    desc: "I made this project for IU Indianapolis'ePortfolio Showcase to allow the administrators of the showcase to have a easy to use application to manage the showcase entries.  This project taught me how to use many different full-stack tools at my disposal, including:",
-    skillsLearned: [
-      "PHP", "Laravel", "Eloquent/Illuminate", "Diactoros", "HTML Rendering with Twig"
-    ],
-    viewLiveLink:"",
-    viewGithubLink: ""
+    live:"",
+    github:""
   },
   project2: {
-    title: "Attack of the Front End Web Developer",
-    desc: "This project was a challenge to myself to attempt to learn as much as I can in Svelte and Sveltekit in a predefined amount of time. I was inspired by 1950s horror movies for my theme and wrote a story about a ghostly apparition of a front-end web developer. This project was completed in about 2 days, and I learned many things in the realm of Front-End Javascript Frameworks, including:",
-    skillsLearned: [
-      "Svelte", "Sveltekit"
-    ],
-    viewLiveLink:"https://framework-practice.vercel.app/",
-    viewGithubLink: ""
+    live:"https://google.com",
+    github:"https://google.com"
   },
   project3: {
-    title: "ArmorCoach",
-    desc: "This project was created for my NEWM-N423, and is an application to help students of Historical Fencing academies select items to add to group orders. The application has two separate views; User and Admin. The admin is able to physically able to purchase items from a group order, while a user is able to add it to the group orders database. Throughout this project, I used what I learned in Sveltekit and developed it using these skills:",
-    skillsLearned: [
-      "Svelte", "Sveltekit", "Firebase", "Firebase Firestore", "Nodemailer"
-    ],
-    viewLiveLink:"https://n-423-homework.vercel.app/",
-    viewGithubLink: "https://github.com/jago-1009/N-423-homework/tree/main/Final-Proj/my-app"
-  }
+    live:"https://google.com",
+    github:"https://google.com"
+  },
 }
 function initListeners() {
   $("#scrollBar").css("height", `${$(document.body).height()}px`);
   $("#scrollBackground").css("height", `${$(document.body).height()}px`);
   $("#color").val($(":root").css("--main-color"));
   $("#grid").hide();
-  $('#dialog-show').on('click', (e) => {
-    let projectArr = $("#center").attr('class').split(" ")[1]
-    let projectSelect = projectDialog[projectArr];
-    $('#dialog-title').html(projectSelect.title)
-    $('#dialog-desc').html(projectSelect.desc)
-    let skillsHTML = ""
-    projectSelect.skillsLearned.forEach(element => {
-      skillsHTML +=`<li>${element}</li>`
-    });
-    $('#dialog-skills').html(skillsHTML)
-    if (projectSelect.viewLiveLink != "") {
-      $('#dialog-online').html('View Live')
-      $('#dialog-online').attr('href',projectSelect.viewLiveLink)
-    }
-    if (projectSelect.viewGithubLink != "") {
-      $('#dialog-github').html('View Github')
-      $('#dialog-github').attr('href',projectSelect.viewGithubLink)
-    }
-    if (projectSelect.viewGithubLink != "" && projectSelect.viewLiveLink != "") {
-      $("#buffer").html(`|`)
-    }
-    $('#dialog-project')[0].showModal();
-  })
-  $('#dialog-close').on('click', (e) => {
-    $('#dialog-project')[0].close();
-  })
+  $("#icon-github").on('click', function (e) { 
+    
+    $('#link-github')[0].click()
+   })
+  $("#icon-live").on('click', function (e) { 
+    
+    $('#link-live')[0].click()
+  
+   })
 }
 $(window).scroll(function () {
   const windowHeight = $(window).height();
@@ -317,7 +285,25 @@ $("#chevron-right").on("click", function (e) {
 });
 function initCarousel() {
   let currentSlide = $("#center");
+
   currentSlide.removeAttr("style");
+  let currentProj = (currentSlide.attr('class')).split(' ')[1];
+  if (projectLinks[currentProj].live == "") {
+    $("#live").css('visibility','hidden')
+  }
+  else {
+    $("#live").css('visibility','visible')
+    $("#link-live").attr('href', projectLinks[currentProj].live)
+  }
+
+  if (projectLinks[currentProj].github == "") {
+
+    $("#github").css('visibility','hidden')
+  }
+  else {
+    $("#github").css('visibility','visible')
+    $("#link-github").attr('href', projectLinks[currentProj].github)
+  }
   for (let i = 0; i < projects.length; i++) {
     let projNum = projects[i];
     let slide = $(`.${projNum}`);

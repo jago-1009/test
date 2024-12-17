@@ -1372,3 +1372,32 @@ z-index: 60 !important;
   background-color: var(--main-color);
   color: var(--background);
 }
+.live-links {
+  display: flex;
+  width:50%;
+  justify-content: space-around;
+  margin-top:50px;
+}
+.live-links > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.light {
+  color: var(--main-color) !important;
+  font-size:40px;
+  transition: 0.1s all ease-in-out;
+  cursor: pointer;
+}
+.live-links section:hover {
+    border-color: var(--main-color);
+  
+}
+.live-links section {
+  border-bottom: 1px solid var(--background);
+}
+.live-links section > * {
+  text-decoration: none;
+  color: var(--main-color);
+}
