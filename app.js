@@ -289,21 +289,22 @@ function initCarousel() {
   currentSlide.removeAttr("style");
   let currentProj = (currentSlide.attr('class')).split(' ')[1];
   if (projectLinks[currentProj].live == "") {
-    $("#live").css('visibility','hidden')
-  }
-  else {
-    $("#live").css('visibility','visible')
-    $("#link-live").attr('href', projectLinks[currentProj].live)
-  }
+    $("#live").css({'visibility': 'hidden', 'opacity': '0'});
+    $("#live-desktop").css({'visibility': 'hidden', 'opacity': '0'});
+} else {
+   $("#live-desktop").css({'visibility': 'visible', 'opacity': '1'});
+    $("#live").css({'visibility': 'visible', 'opacity': '1'});
+    $("#link-live").attr('href', projectLinks[currentProj].live);
+}
 
-  if (projectLinks[currentProj].github == "") {
-
-    $("#github").css('visibility','hidden')
-  }
-  else {
-    $("#github").css('visibility','visible')
-    $("#link-github").attr('href', projectLinks[currentProj].github)
-  }
+if (projectLinks[currentProj].github == "") {
+    $("#github").css({'visibility': 'hidden', 'opacity': '0'});
+    $("#github-desktop").css({'visibility': 'hidden', 'opacity': '0'});
+} else {
+  $("#github-desktop").css({'visibility': 'visible', 'opacity': '1'});
+    $("#github").css({'visibility': 'visible', 'opacity': '1'});
+    $("#link-github").attr('href', projectLinks[currentProj].github);
+}
   for (let i = 0; i < projects.length; i++) {
     let projNum = projects[i];
     let slide = $(`.${projNum}`);
