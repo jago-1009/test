@@ -56,13 +56,13 @@
 }
 @keyframes move-forever {
   0% {
-      transform: translate3d(-90px, 0, 0);
-      -webkit-transform: translate3d(-90px, 0, 0);
+      transform: translateX(-90px);
+      /* -webkit-transform: translate3d(-90px, 0, 0); */
   }
 
   100% {
-      transform: translate3d(85px, 0, 0);
-      -webkit-transform: translate3d(85px, 0, 0);
+    transform: translateX(85px);
+    /* -webkit-transform: translate3d(85px, 0, 0); */
   }
 }
 @keyframes move-box {
@@ -454,9 +454,8 @@ transition:none;
 
 }
 .whistle, .lever {
-  top:10%;
+  top:20%;
   position: absolute;
-  height:500px;
   width:25vh;
   display: flex;
   flex-direction: column;
@@ -537,6 +536,7 @@ transition:none;
   width:100%;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom:10px;
 }
 .colorBtn {
   border-radius: 7px;
@@ -553,6 +553,8 @@ html {
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
+  position: relative;
+  z-index: 999999;
 }
 .hero {
     stroke:  var(--background);
@@ -1050,6 +1052,7 @@ use {
   /* filter: drop-shadow( 0 0 1px var(--main-opaque)); */
 }
 #color {
+  margin-top:10px;
   transition: all 0.5s;
 }
 #color::-webkit-color-swatch {
