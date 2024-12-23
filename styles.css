@@ -77,10 +77,10 @@
 }
 @keyframes flow {
   0% {
-    top:6px;
+    transform: translateY(6px);
   }
   100% {
-    top:290px;
+    transform: translateY(290px);
   }
 }
 @keyframes flick {
@@ -912,6 +912,7 @@ img {
   fill: var(--main-color);
   position: relative;
   z-index: 9;
+  will-change: transform;
   animation: flow 0.8s infinite linear;
 }
 .top {
@@ -1015,6 +1016,7 @@ use {
  left:200px;
 }
 .funnel {
+  bottom:1px;
   position: relative;
   height:100%;
   width:100%;
