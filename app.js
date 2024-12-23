@@ -5,36 +5,72 @@ let isDark = true;
 let rotation = 0;
 let isOn = false;
 const projects = ["project1", "project2", "project3"];
-const projectTitle = ['EPortfolio Administrator Interface', 'Attack of the Front End Web Developer', 'ArmorCoach']
-const projectDesc = ["An Adminstrator Interface for IU Indianapolis' ePortfolio Showcase.", "A short story to learn how to use the Svelte Library along with Sveltekit.", "A website for Historical Fencing academies to assign group orders for their students."]
+const projectTitle = [
+  "EPortfolio Administrator Interface",
+  "Attack of the Front End Web Developer",
+  "ArmorCoach",
+];
+const projectDesc = [
+  "An Adminstrator Interface for IU Indianapolis' ePortfolio Showcase.",
+  "A short story to learn how to use the Svelte Library along with Sveltekit.",
+  "A website for Historical Fencing academies to assign group orders for their students.",
+];
+const projectImg = ['assets/img/ePortfolio-Screenshot-Graphic.PNG', 'assets/img/attack-of-front-end-dev.png', 'assets/img/armorcoach.png']
 const projectLinks = {
   project1: {
-    live:"",
-    github:""
+    live: "",
+    github: "",
   },
   project2: {
-    live:"https://google.com",
-    github:"https://google.com"
+    live: "https://google.com",
+    github: "https://google.com",
   },
   project3: {
-    live:"https://google.com",
-    github:"https://google.com"
+    live: "https://google.com",
+    github: "https://google.com",
   },
-}
+};
+
+//INIT LISTENERS
 function initListeners() {
   $("#scrollBar").css("height", `${$(document.body).height()}px`);
   $("#scrollBackground").css("height", `${$(document.body).height()}px`);
   $("#color").val($(":root").css("--main-color"));
   $("#grid").hide();
-  $("#icon-github").on('click', function (e) { 
-    
-    $('#link-github')[0].click()
-   })
-  $("#icon-live").on('click', function (e) { 
-    
-    $('#link-live')[0].click()
-  
-   })
+  $("#icon-github").on("click", function (e) {
+    $("#link-github")[0].click();
+  });
+  $("#icon-live").on("click", function (e) {
+    $("#link-live")[0].click();
+  });
+  $(".grid-item").on("click", function (e) {
+    let classes = $(this).attr("class");
+    let classesSplit = classes.split(" ")[1];
+    classesSplit = classesSplit.split("-")[2];
+    classesSplit = parseInt(classesSplit);
+    let projectSplit = "project" + classesSplit;
+    classesSplit = classesSplit - 1;
+    let linksSection = "";
+    if (projectLinks[projectSplit].live != "") {
+      linksSection += `<section id="live-desktop"><i class="fa-solid fa-laptop dark" id="icon-live"></i><a href="${projectLinks[projectSplit].live}" id='link-live' class="hover">View Live</a></section>`;
+    }
+    if (projectLinks[projectSplit].github != "") {
+      linksSection += `<section id="github-desktop"><i class="fa-brands fa-github dark" id="icon-github"></i><a href="${projectLinks[projectSplit].github}" id='link-github' class="hover">View Github</a></section>
+`;
+    }
+    console.log(projectTitle[classesSplit]);
+    $("#grid-bio").html(` <h3>${projectTitle[classesSplit]}</h3>
+              <p>${projectDesc[classesSplit]}</p>
+              <div class="project-links">
+              ${linksSection}
+            </div>`);
+    $('#grid-img').attr('src', projectImg[classesSplit])
+    $('#grid-img').attr('alt', projectDesc[classesSplit])
+    $('#grid-modal').show()
+  });
+  $('#close-modal-button').on('click',function (e) {
+    $('#grid-modal').hide();
+  })
 }
 $(window).scroll(function () {
   const windowHeight = $(window).height();
@@ -153,7 +189,6 @@ $(".lever-body").on("click", function (e) {
   $("#leverHead").addClass("lever-switch");
   $("#leverHandle").addClass("lever-switch");
 
-  
   setTimeout(() => {
     $("#lever").css("display", "none");
   }, 2000);
@@ -180,16 +215,15 @@ $("#gridBtn").on("click", function (e) {
   $(".pour-left").animate({ left: "-50%" }, 1000);
   $(".pour-right").removeAttr("style");
 });
-$("#carouselBtn").on("click", function (e) {  $(".pour-right").animate({ right: "-200px" }, 1000, function () {
-  $(".pour-right").css("right", "200px");
-});
-$(".pour-left").animate({ left: "-290px" }, 1000, function () {
-  $(".pour-left").css("left", "200px");
-});
- 
+$("#carouselBtn").on("click", function (e) {
+  $(".pour-right").animate({ right: "-200px" }, 1000, function () {
+    $(".pour-right").css("right", "200px");
+  });
+  $(".pour-left").animate({ left: "-290px" }, 1000, function () {
+    $(".pour-left").css("left", "200px");
+  });
 });
 $(document).ready(function () {
-  
   $(".animation").each(function () {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -287,24 +321,24 @@ function initCarousel() {
   let currentSlide = $("#center");
 
   currentSlide.removeAttr("style");
-  let currentProj = (currentSlide.attr('class')).split(' ')[1];
+  let currentProj = currentSlide.attr("class").split(" ")[1];
   if (projectLinks[currentProj].live == "") {
-    $("#live").css({'visibility': 'hidden', 'opacity': '0'});
-    $("#live-desktop").css({'visibility': 'hidden', 'opacity': '0'});
-} else {
-   $("#live-desktop").css({'visibility': 'visible', 'opacity': '1'});
-    $("#live").css({'visibility': 'visible', 'opacity': '1'});
-    $("#link-live").attr('href', projectLinks[currentProj].live);
-}
+    $("#live").css({ visibility: "hidden", opacity: "0" });
+    $("#live-desktop").css({ visibility: "hidden", opacity: "0" });
+  } else {
+    $("#live-desktop").css({ visibility: "visible", opacity: "1" });
+    $("#live").css({ visibility: "visible", opacity: "1" });
+    $("#link-live").attr("href", projectLinks[currentProj].live);
+  }
 
-if (projectLinks[currentProj].github == "") {
-    $("#github").css({'visibility': 'hidden', 'opacity': '0'});
-    $("#github-desktop").css({'visibility': 'hidden', 'opacity': '0'});
-} else {
-  $("#github-desktop").css({'visibility': 'visible', 'opacity': '1'});
-    $("#github").css({'visibility': 'visible', 'opacity': '1'});
-    $("#link-github").attr('href', projectLinks[currentProj].github);
-}
+  if (projectLinks[currentProj].github == "") {
+    $("#github").css({ visibility: "hidden", opacity: "0" });
+    $("#github-desktop").css({ visibility: "hidden", opacity: "0" });
+  } else {
+    $("#github-desktop").css({ visibility: "visible", opacity: "1" });
+    $("#github").css({ visibility: "visible", opacity: "1" });
+    $("#link-github").attr("href", projectLinks[currentProj].github);
+  }
   for (let i = 0; i < projects.length; i++) {
     let projNum = projects[i];
     let slide = $(`.${projNum}`);
@@ -314,8 +348,8 @@ if (projectLinks[currentProj].github == "") {
     if (isCenter) {
       // console.log(slide)
       let currentIndex = slide.index() - 1;
-      $("#project-title").html(projectTitle[currentIndex])
-      $("#project-desc").html(projectDesc[currentIndex])
+      $("#project-title").html(projectTitle[currentIndex]);
+      $("#project-desc").html(projectDesc[currentIndex]);
       if (currentIndex - 1 < 0) {
         leftSlide = 2;
       } else {
@@ -343,8 +377,11 @@ $("#carouselBtn").on("click", function () {
   $("#grid").hide();
   $("#carousel").show();
 });
-
+function hideModal() {
+  $("#grid-modal").hide();
+}
 $(document).ready(function () {
   initListeners();
   initCarousel();
+  hideModal();
 });

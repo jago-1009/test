@@ -613,9 +613,16 @@ html {
   justify-content: center;
   background-color: var(--main-color);
   transition: 0.3s all ease-in-out;
+  flex-direction: column;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
 }
 .grid-item:hover {
   scale: 1.1;
+}
+.grid-item img {
+  border-radius: 10px 10px 0px 0px;
 }
 .project-carousel * {
   transition: 0.5s all ease-in-out;
@@ -643,6 +650,36 @@ html {
   border-radius: 50%;
   cursor: pointer;
   z-index: 105;
+}
+.grid-modal {
+  position: absolute;
+  height:80%;
+  width: 80%;
+  background-color: var(--main-color);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+#close-modal-button {
+  position: absolute;
+  top:20px;
+  left:20px;
+  font-size: 32px;
+  cursor: pointer;
+}
+.grid-bio {
+  width: 50%;
+  text-align: center;
+  margin-right:20px;
+  margin-left:20px;
+}
+.project-links {
+  display: flex;
+  justify-content: space-evenly;
+}
+.grid-img {
+  width:50%;
+  margin-right:20px;
 }
 .gridBtn {
   flex-wrap: wrap;
@@ -1448,6 +1485,25 @@ z-index: 60 !important;
   }
 }
 
+@media (max-width:600px) {
+.grid-item {
+  margin:0;
+}
+.grid-modal {
+  flex-direction: column;
+}
+.grid-bio {
+  width: 80%;
+}
+.grid-img {
+  margin-top: 20px;
+  width: 80%;
+}
+  .project-links > * {
+    margin-left:20px;
+    margin-right: 20px;;
+  }
+}
 @media (max-width:500px) {
   
   .boxes {
@@ -1457,6 +1513,8 @@ z-index: 60 !important;
     right:20%;
     top:15%;
   }
+ 
+  
 }
 @media (max-width:400px) {
   .boxes {
