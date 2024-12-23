@@ -1519,6 +1519,9 @@ z-index: 60 !important;
   
 }
 @media (max-width:400px) {
+  .nuge2 {
+    bottom:30px;
+  }
   .boxes {
     transform: translateY(-100%) translateX(-110%);
   }
