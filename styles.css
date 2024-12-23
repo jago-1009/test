@@ -519,7 +519,7 @@ transition:none;
   transform: rotate(-60deg);
   background-color: var(--main-color);
   width:200px;
-  height:50px;
+  height:30px;
 }
 .whistle-head {
   transform: translate(20px, -110px);
@@ -1485,6 +1485,7 @@ z-index: 60 !important;
     display: block; 
     translate: 0 -370px;
   }
+  
 }
 
 @media (max-width:600px) {

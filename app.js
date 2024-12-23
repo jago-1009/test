@@ -15,7 +15,11 @@ const projectDesc = [
   "A short story to learn how to use the Svelte Library along with Sveltekit.",
   "A website for Historical Fencing academies to assign group orders for their students.",
 ];
-const projectImg = ['assets/img/ePortfolio-Screenshot-Graphic.PNG', 'assets/img/attack-of-front-end-dev.png', 'assets/img/armorcoach.png']
+const projectImg = [
+  "assets/img/ePortfolio-Screenshot-Graphic.PNG",
+  "assets/img/attack-of-front-end-dev.png",
+  "assets/img/armorcoach.png",
+];
 const projectLinks = {
   project1: {
     live: "",
@@ -64,45 +68,32 @@ function initListeners() {
               <div class="project-links">
               ${linksSection}
             </div>`);
-    $('#grid-img').attr('src', projectImg[classesSplit])
-    $('#grid-img').attr('alt', projectDesc[classesSplit])
-    $('#grid-modal').show()
+    $("#grid-img").attr("src", projectImg[classesSplit]);
+    $("#grid-img").attr("alt", projectDesc[classesSplit]);
+    $("#grid-modal").show();
   });
-  $('#close-modal-button').on('click',function (e) {
-    $('#grid-modal').hide();
-  })
+  $("#close-modal-button").on("click", function (e) {
+    $("#grid-modal").hide();
+  });
 }
 $(window).scroll(function () {
   const windowHeight = $(window).height();
   const scrollTop = $(window).scrollTop();
   const scrollHeight = $(document).height() - $(window).height();
   const scrollRatio = scrollTop / scrollHeight;
-  const windowWidth = $(window).width();
+  const windowWidth = window.outerWidth;
+
   const halfWaypoint = windowWidth / 2;
 
   $(".left").each(function () {
-    const boxPosition = $(this).offset().left;
-    switch (windowWidth) {
-      case windowWidth < 600:
-        if (boxPosition > windowWidth / 1.5) {
-          $(this).hide();
-        } else {
-          $(this).show();
-        }
-        break;
-      case windowWidth < 400:
-        if (boxPosition > windowWidth / 1.4) {
-          $(this).hide();
-        } else {
-          $(this).show();
-        }
-        break;
-      default:
-        if (boxPosition >= halfWaypoint) {
-          $(this).css("opacity", `0`);
-        } else {
-          $(this).css("opacity", `1`);
-        }
+    const boxOffset = $(this).offset();
+    const scrollLeft = $(window).scrollLeft();
+    let boxPosition = boxOffset.left - scrollLeft;
+
+    if (boxPosition > windowWidth / 2) {
+      $(this).css("opacity", "0");
+    } else {
+      $(this).css("opacity", "1");
     }
   });
 
@@ -113,9 +104,10 @@ $(window).scroll(function () {
   $("#scrollTest").css("top", `calc(${thumbPosition}px + 10px)`);
 });
 $(window).resize(function () {
-  const windowWidth = $(window).width();
-  const halfWaypoint = windowWidth / 1.5;
+  const windowWidth = window.outerWidth;
+  const halfWaypoint = windowWidth / 2;
   $(".left").each(function () {
+
     const boxPosition = $(this).position().left;
     if (boxPosition > halfWaypoint) {
       $(this).css("opacity", `0`);
@@ -380,6 +372,7 @@ $("#carouselBtn").on("click", function () {
 function hideModal() {
   $("#grid-modal").hide();
 }
+
 $(document).ready(function () {
   initListeners();
   initCarousel();
