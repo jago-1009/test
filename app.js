@@ -26,12 +26,12 @@ const projectLinks = {
     github: "",
   },
   project2: {
-    live: "https://google.com",
-    github: "https://google.com",
+    live: "https://framework-practice.vercel.app/",
+    github: "https://github.com/jago-1009/Framework-Practice",
   },
   project3: {
-    live: "https://google.com",
-    github: "https://google.com",
+    live: "https://n-423-homework.vercel.app/",
+    github: "https://github.com/jago-1009/N-423-homework/tree/main/Final-Proj/my-app",
   },
 };
 
@@ -41,11 +41,11 @@ function initListeners() {
   $("#scrollBackground").css("height", `${$(document.body).height()}px`);
   $("#color").val($(":root").css("--main-color"));
   $("#grid").hide();
-  $("#icon-github").on("click", function (e) {
-    $("#link-github")[0].click();
+  $(".icon-github").on("click", function (e) {
+    $(".link-github")[0].click();
   });
-  $("#icon-live").on("click", function (e) {
-    $("#link-live")[0].click();
+  $(".icon-live").on("click", function (e) {
+    $(".link-live")[0].click();
   });
   $(".grid-item").on("click", function (e) {
     let classes = $(this).attr("class");
@@ -56,10 +56,10 @@ function initListeners() {
     classesSplit = classesSplit - 1;
     let linksSection = "";
     if (projectLinks[projectSplit].live != "") {
-      linksSection += `<section id="live-desktop"><i class="fa-solid fa-laptop dark" id="icon-live"></i><a href="${projectLinks[projectSplit].live}" id='link-live' class="hover">View Live</a></section>`;
+      linksSection += `<section id="live-desktop"><i class="fa-solid fa-laptop dark" id="icon-live"></i><a target="_blank" href="${projectLinks[projectSplit].live}" id='link-live' class="hover">View Live</a></section>`;
     }
     if (projectLinks[projectSplit].github != "") {
-      linksSection += `<section id="github-desktop"><i class="fa-brands fa-github dark" id="icon-github"></i><a href="${projectLinks[projectSplit].github}" id='link-github' class="hover">View Github</a></section>
+      linksSection += `<section id="github-desktop"><i class="fa-brands fa-github dark" id="icon-github"></i><a target="_blank" href="${projectLinks[projectSplit].github}" id='link-github' class="hover">View Github</a></section>
 `;
     }
     console.log(projectTitle[classesSplit]);
@@ -320,7 +320,8 @@ function initCarousel() {
   } else {
     $("#live-desktop").css({ visibility: "visible", opacity: "1" });
     $("#live").css({ visibility: "visible", opacity: "1" });
-    $("#link-live").attr("href", projectLinks[currentProj].live);
+    $(".link-live").attr("href", projectLinks[currentProj].live);
+    $(".link-live").attr("target", "_blank");
   }
 
   if (projectLinks[currentProj].github == "") {
@@ -329,7 +330,8 @@ function initCarousel() {
   } else {
     $("#github-desktop").css({ visibility: "visible", opacity: "1" });
     $("#github").css({ visibility: "visible", opacity: "1" });
-    $("#link-github").attr("href", projectLinks[currentProj].github);
+    $(".link-github").attr("href", projectLinks[currentProj].github);
+    $(".link-github").attr("target", "_blank");
   }
   for (let i = 0; i < projects.length; i++) {
     let projNum = projects[i];
