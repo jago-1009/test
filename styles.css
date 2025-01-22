@@ -664,6 +664,9 @@ html {
   display: flex;
   align-items: center;
 }
+.grid-modal * {
+  color:var(--background);
+}
 #close-modal-button {
   position: absolute;
   top:20px;
