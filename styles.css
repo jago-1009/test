@@ -664,6 +664,9 @@ html {
   display: flex;
   align-items: center;
 }
+.grid * {
+  color: var(--background);
+}
 .grid-modal * {
   color:var(--background);
 }
