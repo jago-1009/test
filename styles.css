@@ -585,7 +585,9 @@ html {
   position: relative;
   z-index: 99;
 }
-
+.info * {
+  color:var(--background);
+}
 .project-carousel {
   width:80%;
   height:100%;
